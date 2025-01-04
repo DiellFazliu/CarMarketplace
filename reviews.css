@@ -1,0 +1,66 @@
+#reviews-section {
+    margin: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  #average-rating {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  #reviews-list {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  
+  .review-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+  }
+  
+  .review-item:last-child {
+    border-bottom: none;
+  }
+  
+  .review-date {
+    font-size: 0.85em;
+    color: #666;
+  }
+  
+  #review-form label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  #review-form input,
+  #review-form textarea,
+  #review-form select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  #review-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #review-form button:hover {
+    background-color: #0056b3;
+  }
+  

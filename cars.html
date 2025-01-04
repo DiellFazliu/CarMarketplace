@@ -4,12 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Makina</title>
     <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #333;
+        }
+
         header {
             position: sticky;
             top: 0;
-            /* Keeps the header stuck to the top */
             background-color: #333;
             color: white;
             padding: 10px 0;
@@ -19,386 +27,464 @@
 
         main {
             padding: 20px;
-            height: 1500px;
-            /* To enable scrolling */
-            margin-top: 40px;
+            margin-left: 25%;
         }
 
-        #section-1 {
-            background-color: white;
-            color: black;
-            text-align: center;
-            height: 50px;
+        .sidebar {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            width: 20%;
+            height: 100%;
+            padding: 20px;
+            background: #fff;
+            border-right: 1px solid #ddd;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
         }
 
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            font-family: Arial, Helvetica, sans-serif;
-            color: #333;
-        }
-
-        /* Navbar styles */
-        .navbar {
-            width: 100%;
-            height: 45px;
-            background-color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 30px;
-            /* Reduced height */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            /* Subtle shadow */
-            position: fixed;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .navbar ul {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            align-items: center;
-        }
-
-        .navbar li {
-            position: relative;
-            margin: 0 15px;
-        }
-
-        .navbar a {
-            color: #333;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.3s ease-in-out;
-        }
-
-        .line {
-            margin: 10px;
-        }
-
-        /* Hover effect for navbar links */
-        .navbar a:hover {
-            color: #1F2B59;
-            /* Darker color on hover */
-        }
-
-        .navbar .line::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            /* Position the underline just below the text */
-            left: 0;
-            width: 0;
-            height: 2px;
-            /* Thickness of the underline */
-            background-color: #1F2B59;
-            /* Color of the underline */
-            transition: width 0.3s ease-in-out;
-        }
-
-        .navbar a:hover::after {
-            width: 100%;
-            /* Expand the underline on hover */
-        }
-
-        /* Logo styles */
-        .logo {
-            height: 60px;
-            /* Slightly larger logo */
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .logo:hover {
-            transform: scale(1.1);
-            /* Subtle zoom effect on hover */
-        }
-
-        .name {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: rgb(141, 224, 32);
-        }
-
-        /* Dropdown menu styles */
-        .navbar .dropdown .dropbtn {
-            font-size: 14px;
-            font-weight: 500;
-            color: #333;
+        .sidebar fieldset {
+            border-radius: 10px;
             padding: 10px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            transition: color 0.3s ease-in-out;
         }
 
-        .navbar .dropdown .dropbtn:hover {
-            color: #1F2B59;
-            /* Darker shade on hover */
-        }
-
-        /* Dropdown container */
-        .navbar .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 100%;
-            /* Position below the dropdown button */
-            right: 0;
-            /* Align to the right */
-            background-color: white;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-            min-width: 200px;
-            border-radius: 8px;
-            /* Rounded corners */
-            z-index: 10;
-            opacity: 0;
-            /* Hidden initially */
-            transform: translateY(-10px);
-            /* For slide-down effect */
-            transition: all 0.3s ease-in-out;
-        }
-
-        /* Display dropdown on hover */
-        .navbar .dropdown:hover .dropdown-content {
+        .sidebar fieldset label {
             display: block;
-            opacity: 1;
-            /* Fully visible */
-            transform: translateY(0);
-            /* Slide into position */
+            margin-top: 10px;
         }
 
-        /* Dropdown links */
-        .navbar .dropdown-content a {
-            display: block;
-            padding: 12px 16px;
-            color: #333;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .navbar .dropdown-content a:hover {
-            color: #1F2B59;
-            /* Darker shade on hover */
-            border-radius: 8px;
-        }
-
-        input[type="submit"]:hover,
-        input[type="reset"]:hover {
-            background-color: #b3d4fc;
-        }
-
-        #button {
-            margin-top: 20px;
-            width: 90%;
-            background: rgb(141, 224, 32);
-            background: linear-gradient(90deg, rgba(141, 224, 32, 1) 0%, rgba(170, 230, 0, 1) 38%, rgba(190, 240, 0, 1) 100%);
-            color: #ffffff;
-            padding: 10px 0;
-            font-size: 18px;
-            font-weight: 600;
+        .sidebar button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
             border-radius: 5px;
             cursor: pointer;
-            border-radius: 8px;
-            border: white;
         }
 
-        .sign-up {
-            margin-top: 20px;
-            text-align: center;
+        .cars-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
-        .favorite {
-            padding-left: 300px;
+        .car-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            width: calc(25% - 20px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .login-icon {
-            height: 30px;
-        }
-
-        i {
-            margin: 12px;
-        }
-
-        .navbar .dropdown-content .login-text a {
-            text-align: left;
-            /* Aligns the text to the left */
-            padding-left: 10px;
-            /* Optional: Adjust the left padding if needed */
-        }
-
-        .sign:hover {
-            transform: scale(1.1);
-            /* Subtle zoom effect on hover */
-        }
-
-        #button:hover {
+        .car-card:hover {
             transform: scale(1.05);
-            /* Subtle zoom effect on hover */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        .login-text:hover {
-            transform: scale(1.1);
+        .car-card img {
+            width: 100%;
+            border-radius: 10px;
         }
 
-        .favorite {
-            font-size: 24px;
-            transition: all 0.3s ease;
+        .car-card ul {
+            list-style: none;
+            padding: 0;
         }
 
-        #icon-regular {
-            display: inline-block;
+        .car-card ul li {
+            margin-top: 5px;
         }
 
-        #icon-solid {
-            display: none;
+        #header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            height: 100px;
+            z-index: 1000;
+            border: none;
         }
 
-        .favorite:hover #icon-regular {
-            display: none;
-        }
+        @media (max-width: 768px) {
+            .sidebar {
+                position: static;
+                width: 100%;
+                border: none;
+                box-shadow: none;
+            }
 
-        .favorite:hover #icon-solid {
-            display: inline-block;
-        }
+            main {
+                margin-left: 0;
+            }
 
-        .profile {
-            width: 250px;
-            height: auto;
-        }
-
-        p {
-            padding: 10px;
-        }
-        button{
-            border-radius: 5px;
-            width: 80px;
-
+            .car-card {
+                width: 100%;
+            }
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <div id="section-1">
-            <nav class="navbar">
-                <ul>
-                    <li><a href="project.html" class="line"><img src="logo.png" class="logo" /></a></li>
-                    <li class="name">AUTOSPHERE</li>
-                    <li><a href="project.html" class="line">Home</a></li>
-                    <li><a href="#" class="line">About</a></li>
-                    <li><a href="#" class="line">How it works</a></li>
-                    <li><a href="#" class="line">Reviews</a></li>
-                    <li><a href="#" class="favorite"><i class="fa-regular fa-heart" id="icon-regular"></i>
-                            <i class="fa-solid fa-heart" id="icon-solid"></i></a></li>
+    <div id="header"></div>
+    <script>
+        fetch('banner.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
+        });
+    </script>
+    <script src="banner.js"></script>
 
-                    <li class="dropdown">
-                        <div>
-                            <a href="#" class="dropbtn"><i class="fa-regular fa-user"></i>Login</a>
-                            <ul class="dropdown-content">
-                                <li class="login-text"><a href="#"><i class="fa-regular fa-heart"></i>Favorite cars</a>
-                                </li>
-                                <input id="button" type="submit" value="Login"
-                                    onclick="window.location.href='login.html';">
-                                <li>
-                                    <div class="sign-up">
-                                        <a>Don't have an account?</a> <a href="register.html" class="sign" style="color: rgb(141, 224, 32);text-decoration: none;
-                                font-weight: 500;"> <br> Sign up</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <div class="sidebar">
+        <fieldset>
+            <legend>Kërkoni:</legend>
+
+            <label for="brand">Marka:</label>
+            <select id="brand">
+                <option>Audi</option>
+                <option>BMW</option>
+                <option>Mercedes</option>
+            </select>
+
+            <label for="model">Modeli:</label>
+            <input type="text" id="model" placeholder="Shkruaj modelin">
+
+            <label for="price">Çmimi deri:</label>
+            <input type="number" id="price" placeholder="Max çmimi">
+
+            <button>Filtro</button>
+        </fieldset>
+    </div>
+
     <main>
-        <div style="display: flex;">
-                <div style="width: 30%; padding-right: 20px; position: fixed;">
-                    <fieldset style="border-radius: 10px; width: fit-content; padding: 10px;">
-                    <div style="display: block; padding: 10px;">
-                        <button>Brand</button>
-                        <button>Model</button>
-                    </div>
-                    <div style="display: block; padding: 10px;">
-                        <button>Register</button>
-                        <button>Miliage</button>
-                    </div>
-                    <div style="display: block; padding: 10px;">
-                        <button>Price up to</button>
-                        <button>Search</button>
-                    </div>
-                    </fieldset>
-                </div>
-            <div style="padding-left: 30%;">
-                <fieldset style="display: flex; border-radius: 10px;">
-                    <div>
-                        <img src="Audi/A3/normal/a.jfif" alt="fotoprofilit" class="profile">
-                    </div>
-                    <div style="display: block;">
-                        <p style="padding-left: 10px;"><b>Audi A3 Black ABS</b></p>
-                        <div style="display: flex;">
-                            <p>Kilometrazha: 10000km</p>
-                            <p>Ulse: 4</p>
-                            <p>Qmimi: 100000</p>
-                        </div>
-                    </div>
-                </fieldset>
-                <fieldset style="display: flex; border-radius: 10px;margin-top: 10px;">
-                    <div>
-                        <img src="Audi/A3/kabriolet/a.jfif" alt="fotoprofilit" class="profile">
-                    </div>
-                    <div style="display: block;">
-                        <p style="padding-left: 10px;"><b>Audi A3 Black ABS</b></p>
-                        <div style="display: flex;">
-                            <p>Kilometrazha: 10000km</p>
-                            <p>Ulse: 4</p>
-                            <p>Qmimi: 100000</p>
-                        </div>
-                    </div>
-                </fieldset>
-                <fieldset style="display: flex; border-radius: 10px;margin-top: 10px;">
-                    <div>
-                        <img src="Audi/A8/normal/a.jfif" alt="fotoprofilit" class="profile">
-                    </div>
-                    <div style="display: block;">
-                        <p style="padding-left: 10px;"><b>Audi A3 Black ABS</b></p>
-                        <div style="display: flex;">
-                            <p>Kilometrazha: 10000km</p>
-                            <p>Ulse: 4</p>
-                            <p>Qmimi: 100000</p>
-                        </div>
-                    </div>
-                </fieldset>
-                <fieldset style="display: flex; border-radius: 10px; margin-top: 10px;">
-                    <div>
-                        <img src="Audi/A7/normal/a.jfif" alt="fotoprofilit" class="profile">
-                    </div>
-                    <div style="display: block;">
-                        <p style="padding-left: 10px;"><b>Audi A3 Black ABS</b></p>
-                        <div style="display: flex;">
-                            <p>Kilometrazha: 10000km</p>
-                            <p>Ulse: 4</p>
-                            <p>Qmimi: 100000</p>
-                        </div>
-                    </div>
-                </fieldset>
+        <div class="cars-container">
+            <div class="car-card">
+                <img src="Audi/A3/normal/a.jfif" alt="Audi A3">
+                <h3>Audi A3 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 10,000 km</li>
+                    <li>Numri i ulëseve: 4</li>
+                    <li>Çmimi: 100,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="Audi/A3/kabriolet/a.jfif" alt="Audi A3 Kabriolet">
+                <h3>Audi A3 Kabriolet</h3>
+                <ul>
+                    <li>Kilometrazhi: 12,000 km</li>
+                    <li>Numri i ulëseve: 4</li>
+                    <li>Çmimi: 110,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="Audi/A6/normal/a.jfif" alt="Audi A6">
+                <h3>Audi A8 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 8,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 150,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="Audi/A6/rs6/a.jfif" alt="Audi RS6">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="Audi/A7/normal/a.jfif" alt="Audi A7">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="Audi/A7/rs7/a.jfif" alt="Audi RS7">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="Audi/A8/normal/a.jfif" alt="Audi A8">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="Audi/A8/s8/a.jfif" alt="Audi S8">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="Mercedes-Benz/C-class/coupe/c.jfif" alt="Mercedes C coupe">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="Mercedes-Benz/C-class/karavan/c.jfif" alt="Mercedes C karavan">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="Mercedes-Benz/C-class/normal/c.jfif" alt="Mercedes C">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="Mercedes-Benz/E-class/coupe/e.jfif" alt="Mercedes E coupe">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="Mercedes-Benz/E-class/karavan/e.jfif" alt="Mercedes E karavan">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="Mercedes-Benz/E-class/normal/e.jfif" alt="Mercedes E">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="Mercedes-Benz/G-class/blue/g.jfif" alt="Mercedes G blue">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="Mercedes-Benz/G-class/normal/g.jfif" alt="Mercedes G">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="Mercedes-Benz/S-class/coupe/s.jfif" alt="Mercedes S coupe">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="Mercedes-Benz/S-class/normal/s.jfif" alt="Mercedes S">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="BMW/M3/normal/b.jpg" alt="BMW 3">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="BMW/M3/m3/b.jpg" alt="BMW M3">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="BMW/M4/coupe/b.jpg" alt="BMW 4 coupe">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="BMW/M4/m4/b.jpg" alt="BMW M4">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="BMW/M7/m sport/b.jpg" alt="BMW 7 msport">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="BMW/M7/2024/b.jpg" alt="BMW 7 2024">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="BMW/M8/coupe/b.jpg" alt="BMW 8 coupe">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="BMW/M8/normal/b.jpg" alt="BMW 8">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="Porsche/911/991/p.jpg" alt="Porsche 991">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="Porsche/911/992/p.jpg" alt="Porsche 992">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="Porsche/taycan/p.jpg" alt="Porsche Taycan">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="Rolls Royce/ghost/r.jpg" alt="RR Ghost">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="Rolls Royce/wraith/r.jpg" alt="RR wraith">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="Rolls Royce/phantom/r.jpg" alt="RR Phantom">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
+            </div>
+
+            <div class="car-card">
+                <img src="Rolls Royce/dawn/r.jpg" alt="RR Dawn">
+                <h3>Audi A7 Black ABS</h3>
+                <ul>
+                    <li>Kilometrazhi: 5,000 km</li>
+                    <li>Numri i ulëseve: 5</li>
+                    <li>Çmimi: 120,000 €</li>
+                </ul>
             </div>
         </div>
     </main>
