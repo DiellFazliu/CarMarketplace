@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>Si Funksionon AUTOSPHERE</title>
     <style>
         
@@ -290,5 +291,18 @@
             });
         });
     </script>
+=======
+</head>
+<body>
+    <div id="header"></div>
+<script>
+  fetch('banner.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('header').innerHTML = data;
+    });
+</script>
+<script src="banner.js"></script>
+>>>>>>> e0d6c18314556e9f64c7a3d09d06ccb540e28b10
 </body>
 </html>
