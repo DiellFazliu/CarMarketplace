@@ -12,7 +12,7 @@
     <div id="section-1">
         <nav class="navbar">
             <ul>
-                <li><a href="project.html" class="line"><img src="logo.png" class="logo"></a></li>
+                <li><a href="project.html"><img src="logo.png" class="logo"></a></li>
                 <li class="name">AUTOSPHERE</li>
                 <li><a href="project.html" class="line">Home</a></li>
                 <li><a href="#" class="line">About</a></li>
@@ -56,8 +56,6 @@
                             <li><a href="#" data-brand="Mercedes">Mercedes Benz</a></li>
                             <li><a href="#" data-brand="Audi">Audi</a></li>
                             <li><a href="#" data-brand="BMW">BMW</a></li>
-                            <li><a href="#" data-brand="Porche">Porche</a></li>
-                            <li><a href="#" data-brand="Rolls Royce">Rolls Royce</a></li>
                         </ul>
                     </div>
                     <div>
@@ -68,49 +66,11 @@
 
                         </ul>
                     </div>
-                    <div>
-                        <button class="btnMenu" id="registrationButton">Registration&#9660;</button>
-                        <ul style="list-style: none; padding: 0; margin: 0; display: none; max-height: 100px; overflow-y: scroll; border: 1px solid #ddd;"
-                            class="Menu" id="registrationMenu">
-                            <li><a href="#">2024</a></li>
-                            <li><a href="#">2023</a></li>
-                            <li><a href="#">2022</a></li>
-                            <li><a href="#">2021</a></li>
-                            <li><a href="#">2020</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <button class="btnMenu" id="mileageButton">Mileage(km)&#9660;</button>
-                        <ul style="list-style: none; padding: 0; margin: 0; display: none; max-height: 100px; overflow-y: scroll; border: 1px solid #ddd;"
-                            class="Menu" id="mileageMenu">
-                            <li><a href="#">50,000</a></li>
-                            <li><a href="#">100,000</a></li>
-                            <li><a href="#">150,000</a></li>
-                            <li><a href="#">200,000</a></li>
-                            <li><a href="#">300,000</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <button class="btnMenu" id="priceButton">Price up to &#9660;</button>
-                        <ul style="list-style: none; padding: 0; margin: 0; display: none; max-height: 60px; overflow-y: scroll; border: 1px solid #ddd;"
-                            class="Menu" id="priceMenu">
-                            <li><a href="#">$10,000</a></li>
-                            <li><a href="#">$20,000</a></li>
-                            <li><a href="#">$30,000</a></li>
-                            <li><a href="#">$50,000</a></li>
-                            <li><a href="#">$100.000</a></li>
-                            <li><a href="#">$250.000</a></li>
-                        </ul>
-                    </div>
                 </div>
                 <script>
                     $(document).ready(function () {
                         let selectedBrand = "";
                         let selectedModel = "";
-                        let selectedYear = "";
-                        let selectedMileage = "";
-                        let selectedPrice = "";
-
 
                         const models = {
                             Mercedes: ["A Class", "B Class", "C Class", "E Class", "S Class", "GLA", "GLB", "GLE", "GLS", "Maybach"],
@@ -118,22 +78,10 @@
                             BMW: ["Series 1", "Series 3", "Series 4", "Series 5", "X1", "X2", "X3", "X4", "X5", "X6", "X7", "I7"]
                         };
 
-                        const mileageOptions = ["10,000", "50,000", "100,000", "150,000", "200,000", "300,000"];
-
                         const combinations = {
                             "mercedes": "mercedes.html",
-                            "mercedes-a-class-2021-10000-under-30000": "mercedes1.html",
-                            "mercedes-b-class-2020-25000-40000-under-25000": "mercedes-b-class-2020-25000-40000-under-25000.html",
-                            "bmw": "bmw.html",
-                            "bmw-series-3-2021-30000-60000-under-$-30000": "bmw-series-3-2021-30000-60000-under-30000.html",
-                            "bmw-x5-2022-50000-30000-under-50000": "bmw-x5-2022-50000-30000-under-50000.html",
-                            "audi": "audi.html",
-                            "audi-a4-2020-35000-45000-under-35000": "audi-a4-2020-35000-45000-under-35000.html",
-                            "audi-q5-2021-45000-30000-under-45000": "audi-q5-2021-45000-30000-under-45000.html"
+                            "mercedes-a-class": "mercedesA.html",
                         };
-
-                        const mileageItems = mileageOptions.map(mileage => `<li><a href="#">${mileage}</a></li>`).join("");
-                        $("#mileageMenu").html(mileageItems);
 
                         $("#brandMenu a").click(function (e) {
                             e.preventDefault();
@@ -154,35 +102,10 @@
                             $("#modelMenu").slideUp(500);
                         });
 
-                        $("#registrationMenu a").click(function (e) {
-                            e.preventDefault();
-                            selectedYear = $(this).text();
-                            $("#registrationButton").text(selectedYear);
-                            $("#registrationMenu").slideUp(500);
-                        });
-
-                        $("#mileageMenu").on("click", "a", function (e) {
-                            e.preventDefault();
-                            selectedMileage = $(this).text().replace(",", "").replace(" ", "-");
-                            $("#mileageButton").text($(this).text());
-                            $("#mileageMenu").slideUp(500);
-                        });
-
-                        $("#priceMenu a").click(function (e) {
-                            e.preventDefault();
-                            selectedPrice = $(this).text().replace("$", "").replace(",", "");
-                            $("#priceButton").text(`under $${selectedPrice}`);
-                            $("#priceMenu").slideUp(500);
-                        });
-
                         $("#extrapart").click(function () {
                             if (selectedBrand) {
                                 let key = selectedBrand.toLowerCase().replace(/\s+/g, '-');
-
                                 if (selectedModel) key += '-' + selectedModel.toLowerCase().replace(/\s+/g, '-');
-                                if (selectedYear) key += '-' + selectedYear;
-                                if (selectedMileage) key += '-' + selectedMileage;
-                                if (selectedPrice) key += `-under-${selectedPrice}`;
 
                                 if (combinations[key]) {
                                     window.location.href = combinations[key];
@@ -204,21 +127,7 @@
                 </script>
 
                 <input id="extrapart" class="extra-part" type="submit" value="Search"
-                    style="height: 32px; width: 170px; border:#8de020">
-                <script>
-                    $(".extra-part").css("background-color");
-                    $(".extra-part").css({
-                        "background-color": "rgba(141,224,32,1)",
-                        "color": "white"
-                    });
-                    $(".extra-part").on("mouseenter", function () {
-                        $(".extra-part").css("background-color", "rgba(141,224,32,1)");
-                    });
-                    $(".extra-part").on("mouseleave", function () {
-                        $(".extra-part").css("background-color", "rgba(141,224,32,0.7");
-                    });
-                    // </script>
-
+                    style="height: 32px; width: 170px; border:rgba(141,224,32,1); background: #8de020 ;color:white">
             </div>
         </div>
     </div>
@@ -235,7 +144,7 @@
         style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 999;">
     </div>
 
-    <div id="available-cars" style="padding: 20px; margin-top: 20px;">
+    <div id="available-cars" style="padding: 20px; margin-top: 20px; background: white;">
         <h2 style="text-align: center;">Deals of the Week</h2>
         <div id="cars-container" style="display: flex; flex-wrap: wrap; gap: 20px;">
         </div>
@@ -330,6 +239,6 @@
             });
         });
     </script>
-</body>f
+</body>
 
 </html>
