@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f9;
+        }
+
+        /* Header */
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Title */
+        #titulli {
+            font-size: 2.5rem;
+            margin: 60px 50px 20px;
+            color: #000;
+        }
+
+        /* Logos Section */
+        .logos {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            margin: 5px 45px;
+            max-width: 100%;
+        }
+
+        .logos div {
+            text-align: center;
+            display: flex;
+            margin: 10px;
+            justify-content: center;
+        }
+        .logos div p{
+            text-align: center;
+        }
+
+        .logot {
+            height: 30px;
+            width: 30px;
+        }
+
+        /* Main Content */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .left-content {
+            flex: 1 1 30%;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .left-content img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .left-content ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+
+        .left-content ul li {
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        .right-content {
+            flex: 1 1 65%;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .right-content b {
+            color: #8dde20;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #8dde20;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            #titulli{
+                text-align: center;
+                font-size: 2.0rem;
+            }
+
+            
+        }
+        @media (max-width: 480px) {
+            .container {
+                flex-direction: column;
+            }
+            #titulli{
+                text-align: center;
+                font-size: 1.5rem;
+            }
+
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header"></div>
+    <script>
+        fetch('banner.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+    </script>
+    <script src="banner.js"></script>
+
+    <p id="titulli">Audi A3 Cabriolet</p>
+    <div class="logos">
+        <div>
+            <img class="logot" src="car-logos/engine.png">
+            <p>2.0 Diesel(180Ps)</p>
+        </div>
+        <div>
+            <img class="logot" src="car-logos/transmission.png">
+            <p>Automatic</p>
+        </div>
+        <div>
+            <img class="logot" src="car-logos/fuel.png">
+            <p>Diesel</p>
+        </div>
+        <div>
+            <img class="logot" src="car-logos/road.png">
+            <p>100000km</p>
+        </div>
+        <div>
+            <img class="logot" src="car-logos/calendar.png">
+            <p>08/2021</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="left-content">
+            <img src="Audi/A3/kabriolet/a.jfif" alt="Audi A3">
+            <ul>
+                <li>Kilometrazhi: 100000km</li>
+                <li>Motorri: 2.0 Diesel</li>
+                <li>4 Ulese</li>
+            </ul>
+        </div>
+        <div class="right-content">
+            <p><b>Audi A3 Cabriolet: Eleganca dhe Performanca në Qiell të Hapur</b><br><br>
+
+                Audi A3 Cabriolet është një nga makinat më tërheqëse dhe elegante të klasës kompakte luksoze, e krijuar
+                për të ofruar një eksperiencë të paharrueshme drejtimi nën qiell të hapur. Ky model kombinon
+                mjeshtërisht
+                dizajnin modern, teknologjinë më të fundit dhe performancën e fuqishme për të kënaqur si drejtuesin
+                ashtu
+                edhe pasagjerët.
+
+                <br><b>Dizajni</b><br>
+                Audi A3 Cabriolet ka një pamje dinamike dhe sportive, me linja të pastra dhe proporcione perfekte.
+                Kabina e saj e hapur shton ndjesinë e luksit, ndërsa tavanin e butë me palosje automatike mund ta hapni
+                ose mbyllni brenda vetëm 18 sekondave, edhe kur makina është në lëvizje deri në 50 km/h.
+
+                <br><b>Performanca</b><br>
+                Nën kapak, Audi A3 Cabriolet vjen me një gamë motorësh të fuqishëm dhe efikas, duke përfshirë opsione
+                benzine dhe nafte.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 Audi. Të gjitha të drejtat e rezervuara.
+    </footer>
+</body>
+
+</html>
