@@ -7,6 +7,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="reviews.js"></script>
+    <title>Car Reviews</title>
 </head>
 <body>
     <div id="Banner"></div>
@@ -25,18 +26,18 @@
         });
       </script>
     <section id="reviews-section">
-        <h2>Car Reviews</h2>
+        <h2 class="section-title">Car Reviews</h2>
       
-        <div id="average-rating">
+        <div id="average-rating" class="rating-box">
           <h3>Average Rating: <span id="average-stars">4.3</span> ⭐️</h3>
           <p>(Based on <span id="total-reviews">10</span> reviews)</p>
         </div>
       
-        <div id="reviews-list">
+        <div id="reviews-list" class="reviews-container">
           <div class="review-item">
             <p><strong>Name:</strong> Arben D.</p>
             <p><strong>Rating:</strong> ⭐️⭐️⭐️⭐️⭐️ (5/5)</p>
-            <p><strong>Comment:</strong> "The car was in perfect condition,  I highly recommend!"</p>
+            <p><strong>Comment:</strong> "The car was in perfect condition, I highly recommend!"</p>
             <p class="review-date">Published on: January 3, 2025</p>
           </div>
           <div class="review-item">
@@ -45,14 +46,10 @@
             <p><strong>Comment:</strong> "Service was good, but the car had minor issues."</p>
             <p class="review-date">Published on: January 2, 2025</p>
           </div>
-
-          
         </div>
       
-
-        
-        <h3>Write a Review</h3>
-        <form id="review-form">
+        <h3 class="form-title">Write a Review</h3>
+        <form id="review-form" class="review-form">
           <label for="review-name">Your Name:</label>
           <input type="text" id="review-name" placeholder="Enter your name" required />
       
@@ -68,8 +65,8 @@
           <label for="review-text">Your Comment:</label>
           <textarea id="review-text" placeholder="Write your comment" required></textarea>
       
-          <button type="submit">Submit Review</button>
+          <button type="submit" class="submit-btn">Submit Review</button>
         </form>
-      </section>
+    </section>
 </body>
 </html>
