@@ -4,9 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <title>Makina</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
-        /* General Styles */
         body {
             margin: 0;
             padding: 0;
@@ -35,14 +37,17 @@
             width: 20%;
             height: 100%;
             padding: 20px;
-            background: #fff;
+            background: rgba(255, 255, 255, 1);
             border-right: 1px solid #ddd;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
         }
 
         .sidebar fieldset {
             border-radius: 10px;
             padding: 10px;
+            background-color: #f4f4f9;
+            box-sizing: border-box;
         }
 
         .sidebar fieldset label {
@@ -53,7 +58,7 @@
         .sidebar button {
             margin-top: 10px;
             padding: 10px;
-            background-color: #333;
+            background-color: rgba(255, 255, 255, 0.9);
             color: white;
             border: none;
             border-radius: 5px;
@@ -105,54 +110,286 @@
         }
 
         @media (max-width: 768px) {
+
+            /* Adjust Sidebar for smaller screens */
             .sidebar {
                 position: static;
+                /* Make sidebar static */
                 width: 100%;
                 border: none;
                 box-shadow: none;
+                padding: 10px;
             }
 
+            /* Make main content take full width */
             main {
                 margin-left: 0;
+                padding: 10px;
+            }
+
+            /* Adjust the width of the car cards */
+            .car-card {
+                width: 100%;
+                /* Full-width on smaller screens */
+            }
+
+            /* Adjust fieldset within sidebar */
+            .sidebar fieldset {
+                width: 100%;
+                /* Ensure fieldset fits the sidebar */
+                padding: 10px;
+            }
+            .extra-part{
+                margin-left: 50px;
+            }
+        }
+
+        /* For screens smaller than 480px */
+        @media (max-width: 480px) {
+            .sidebar {
+                padding: 5px;
+            }
+
+            .sidebar button {
+                font-size: 14px;
+                padding: 8px;
             }
 
             .car-card {
                 width: 100%;
+                /* Make car cards full-width for smaller devices */
             }
+            .extra-part{
+                margin-left: 30px;
+            }
+        }
+
+        .Menu {
+            scrollbar-width: thin;
+            /* For Firefox */
+            scrollbar-color: #888 #f1f1f1;
+            /* Thumb color and track color */
+        }
+
+        /* For WebKit-based browsers */
+        .Menu::-webkit-scrollbar {
+            width: 6px;
+            /* Scrollbar width */
+        }
+
+        .Menu::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            /* Track color */
+            border-radius: 4px;
+        }
+
+        .Menu::-webkit-scrollbar-thumb {
+            background: #888;
+            /* Thumb color */
+            border-radius: 4px;
+        }
+
+        .Menu::-webkit-scrollbar-thumb:hover {
+            background: #555;
+            /* Thumb hover color */
+        }
+
+        .btnMenu {
+            width: 100%;
+            padding: 7px;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 1);
+            /* Blue background */
+            color: black;
+            border: solid black 2px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .btnMenu:hover {
+            background-color: rgba(141, 224, 32, 0.6);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+
+        .Menu {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .Menu li {
+            margin: 5px 0;
+        }
+
+        .Menu li a {
+            text-decoration: none;
+            color: black;
+            font-size: 14px;
+        }
+
+        .Menu li a:hover {
+            text-decoration: underline;
+        }
+
+        .extra-part {
+            margin-top: 30px;
+            margin-left: 0px;
+            width: 20%;
+            border: 1px solid #aaa5a5;
+            height: 30%;
+            padding: 6px;
+            background-color: rgba(141, 224, 32, 0.6);
+            border-radius: 10px;
         }
     </style>
 </head>
 
 <body>
-    <div id="header"></div>
-    <script>
-        fetch('banner.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('header').innerHTML = data;
-        });
-    </script>
-    <script src="banner.js"></script>
+    
+<div id="Banner"></div>
+<script>
+    fetch('banner.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('Banner').innerHTML = data;
+      });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const script = document.createElement('script');
+      script.src = 'banner.js';
+      document.body.appendChild(script);
+    });
+  </script>
+
 
     <div class="sidebar">
         <fieldset>
-            <legend>Kërkoni:</legend>
+            <div>
+                <button class="btnMenu" id="brandButton" style="color: black;">Brand
+                    &nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &#9660;</button>
+                <ul style="list-style: none; padding: 0; margin: 0; display: none; max-height: 100px; overflow-y: scroll; border: 1px solid #ddd;"
+                    class="Menu" id="brandMenu">
+                    <li><a href="#" data-brand="Mercedes">Mercedes Benz</a></li>
+                    <li><a href="#" data-brand="Audi">Audi</a></li>
+                    <li><a href="#" data-brand="BMW">BMW</a></li>
+                    <li><a href="#" data-brand="Porche">Porche</a></li>
+                    <li><a href="#" data-brand="Rolls Royce">Rolls Royce</a></li>
+                </ul>
+            </div>
+            <div>
+                <button class="btnMenu" id="modelButton"
+                    style="color: black;">Model&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &#9660;</button>
+                <ul style="list-style: none; padding: 0; margin: 0; display: none; max-height: 150px; overflow-y: scroll; border: 1px solid #ddd;"
+                    class="Menu" id="modelMenu">
 
-            <label for="brand">Marka:</label>
-            <select id="brand">
-                <option>Audi</option>
-                <option>BMW</option>
-                <option>Mercedes</option>
-            </select>
+                </ul>
+            </div>
+            <script>
+                $(document).ready(function () {
+                    let selectedBrand = "";
+                    let selectedModel = "";
 
-            <label for="model">Modeli:</label>
-            <input type="text" id="model" placeholder="Shkruaj modelin">
+                    const models = {
+                        Mercedes: ["C Class", "E Class", "S Class", "G Class"],
+                        Audi: ["A3", "A6", "A7", "A8"],
+                        BMW: ["Series 3", "Series 4", "Series 7", "Series 8"],
+                        Porsche: ["991", "992", "Taycan"],
+                        "Rolls Royce": ["Phantom", "Ghost", "Wraith", "Dawn"]
+                    };
 
-            <label for="price">Çmimi deri:</label>
-            <input type="number" id="price" placeholder="Max çmimi">
+               
+                    const combinations = {
+                        "mercedes": "mercedes.html",  
+                        "mercedes-a-class": "mercedes-a-class.html",
+                        "mercedes-b-class": "mercedes-b-class.html",
+                        "audi": "audi.html", 
+                        "audi-a1": "audi-a1.html",
+                        "audi-a3": "audi-a3.html",
+                        "bmw": "bmw.html",  
+                        "bmw-series-1": "bmw-series-1.html",
+                        "porsche": "porsche.html",
+                        "porsche-cayman": "porsche-cayman.html",
+                        "rolls-royce": "rolls-royce.html", 
+                        "rolls-royce-phantom": "rolls-royce-phantom.html"
+                    };
 
-            <button>Filtro</button>
+                    
+                    $("#brandMenu a").click(function (e) {
+                        e.preventDefault();
+                        selectedBrand = $(this).data("brand");
+                        $("#brandButton").text(selectedBrand); 
+                        $("#brandMenu").slideUp(500); 
+
+                        const modelList = models[selectedBrand] || [];
+                        const modelItems = modelList.map(model => `<li><a href="#">${model}</a></li>`).join("");
+                        $("#modelMenu").html(modelItems);
+                        $("#modelButton").text("Model");
+              
+                        $("#extrapart").val("Search " + selectedBrand); 
+                    });
+
+                    $("#modelMenu").on("click", "a", function (e) {
+                        e.preventDefault();
+                        selectedModel = $(this).text();
+                        $("#modelButton").text(selectedModel); 
+                        $("#modelMenu").slideUp(500); 
+
+                    });
+
+                    $("#extrapart").click(function () {
+                        if (selectedBrand) {
+
+                            let key = selectedBrand.toLowerCase().replace(/\s+/g, '-');
+
+                            if (selectedModel) {
+                                key += '-' + selectedModel.toLowerCase().replace(/\s+/g, '-');
+                            }
+
+                            if (combinations[key]) {
+                                window.location.href = combinations[key]; 
+                            } else {
+                                alert("No page found for this combination. Please select a valid brand and model.");
+                            }
+                        } else {
+                            alert("Please select a brand.");
+                        }
+                    });
+
+                    $(".btnMenu").click(function () {
+                        const menuId = $(this).attr("id").replace("Button", "Menu");
+                        $(".Menu").not(`#${menuId}`).slideUp(500); 
+                        $(`#${menuId}`).stop(true, true).slideToggle(500); 
+                    });
+                });
+            </script>
+
+            <input id="extrapart" class="extra-part" type="submit" value="23049 total results"
+                style="height: 32px; width: 170px; border:#8de020">
+            <script>$(".extra-part").css("background-color");
+                $(".extra-part").css({
+                    "background-color": "rgba(141,224,32,1)",
+                    "color": "white"
+                });
+                $(".extra-part").on("mouseenter",
+                    function () {
+                        $(".extra-part").css("background-color", "rgba(141,224,32,1)");
+                    }
+                )
+                $(".extra-part").on("mouseleave",
+                    function () {
+                        $(".extra-part").css("background-color", "rgba(141,224,32,0.7");
+                    }
+                )
+            </script>
         </fieldset>
+
     </div>
 
     <main>
