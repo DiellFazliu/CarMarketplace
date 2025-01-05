@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <title>Makina</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
@@ -247,15 +249,23 @@
 </head>
 
 <body>
-    <div id="header"></div>
-    <script>
-        fetch('banner.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header').innerHTML = data;
-            });
-    </script>
-    <script src="banner.js"></script>
+    
+<div id="Banner"></div>
+<script>
+    fetch('banner.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('Banner').innerHTML = data;
+      });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const script = document.createElement('script');
+      script.src = 'banner.js';
+      document.body.appendChild(script);
+    });
+  </script>
+
 
     <div class="sidebar">
         <fieldset>
@@ -278,7 +288,7 @@
                     &#9660;</button>
                 <ul style="list-style: none; padding: 0; margin: 0; display: none; max-height: 150px; overflow-y: scroll; border: 1px solid #ddd;"
                     class="Menu" id="modelMenu">
-                    <!-- The model list will be dynamically populated -->
+
                 </ul>
             </div>
             <script>
@@ -286,7 +296,6 @@
                     let selectedBrand = "";
                     let selectedModel = "";
 
-                    // Define models for each brand
                     const models = {
                         Mercedes: ["C Class", "E Class", "S Class", "G Class"],
                         Audi: ["A3", "A6", "A7", "A8"],
@@ -295,64 +304,56 @@
                         "Rolls Royce": ["Phantom", "Ghost", "Wraith", "Dawn"]
                     };
 
-                    // Define combinations mapping (brand-model to URL)
+               
                     const combinations = {
-                        "mercedes": "mercedes.html",  // Brand-only page
+                        "mercedes": "mercedes.html",  
                         "mercedes-a-class": "mercedes-a-class.html",
                         "mercedes-b-class": "mercedes-b-class.html",
-                        "audi": "audi.html",  // Brand-only page
+                        "audi": "audi.html", 
                         "audi-a1": "audi-a1.html",
                         "audi-a3": "audi-a3.html",
-                        "bmw": "bmw.html",  // Brand-only page
+                        "bmw": "bmw.html",  
                         "bmw-series-1": "bmw-series-1.html",
-                        "porsche": "porsche.html",  // Brand-only page
+                        "porsche": "porsche.html",
                         "porsche-cayman": "porsche-cayman.html",
-                        "rolls-royce": "rolls-royce.html",  // Brand-only page
+                        "rolls-royce": "rolls-royce.html", 
                         "rolls-royce-phantom": "rolls-royce-phantom.html"
                     };
 
-                    // Update selected brand
+                    
                     $("#brandMenu a").click(function (e) {
                         e.preventDefault();
                         selectedBrand = $(this).data("brand");
-                        $("#brandButton").text(selectedBrand); // Update button text
-                        $("#brandMenu").slideUp(500); // Close Brand menu
+                        $("#brandButton").text(selectedBrand); 
+                        $("#brandMenu").slideUp(500); 
 
-                        // Populate Model menu based on selected brand
                         const modelList = models[selectedBrand] || [];
                         const modelItems = modelList.map(model => `<li><a href="#">${model}</a></li>`).join("");
                         $("#modelMenu").html(modelItems);
-                        $("#modelButton").text("Model"); // Reset Model button text
-
-                        // Update the extrapart button text with the selected brand
-                        $("#extrapart").val("Search " + selectedBrand); // Update input value dynamically
+                        $("#modelButton").text("Model");
+              
+                        $("#extrapart").val("Search " + selectedBrand); 
                     });
 
-                    // Update selected model
                     $("#modelMenu").on("click", "a", function (e) {
                         e.preventDefault();
                         selectedModel = $(this).text();
-                        $("#modelButton").text(selectedModel); // Update model button text
-                        $("#modelMenu").slideUp(500); // Close model menu
+                        $("#modelButton").text(selectedModel); 
+                        $("#modelMenu").slideUp(500); 
 
-                        // Update the extrapart button text with the selected model
-                        $("#extrapart").val("Search " + selectedBrand + " " + selectedModel); // Update input value dynamically
                     });
 
-                    // Handle Search button click and redirect
                     $("#extrapart").click(function () {
                         if (selectedBrand) {
-                            // Create the key for the brand-model combination
+
                             let key = selectedBrand.toLowerCase().replace(/\s+/g, '-');
 
-                            // If model is selected, add model to the key
                             if (selectedModel) {
                                 key += '-' + selectedModel.toLowerCase().replace(/\s+/g, '-');
                             }
 
-                            // Check if the combination exists in the mapping
                             if (combinations[key]) {
-                                window.location.href = combinations[key]; // Redirect to the corresponding page
+                                window.location.href = combinations[key]; 
                             } else {
                                 alert("No page found for this combination. Please select a valid brand and model.");
                             }
@@ -361,11 +362,10 @@
                         }
                     });
 
-                    // Toggle Brand and Model menus
                     $(".btnMenu").click(function () {
                         const menuId = $(this).attr("id").replace("Button", "Menu");
-                        $(".Menu").not(`#${menuId}`).slideUp(500); // Close other menus
-                        $(`#${menuId}`).stop(true, true).slideToggle(500); // Toggle the clicked menu
+                        $(".Menu").not(`#${menuId}`).slideUp(500); 
+                        $(`#${menuId}`).stop(true, true).slideToggle(500); 
                     });
                 });
             </script>
