@@ -1,16 +1,5 @@
 
         $(document).ready(function () {
-    const cars = [
-        { id: 1, brand: "Mercedes", model: "E Class", price: "$69,900", image: "Mercedes-Benz/E-class/normal/e7.jfif" },
-        { id: 2, brand: "Audi", model: "A3 Cabriolet", price: "$37,000", image: "Audi/A3/kabriolet/a1.jfif" },
-        { id: 3, brand: "Mercedes", model: "S Class", price: "$130,000", image: "Mercedes-Benz/S-class/normal/s.jfif" },
-        { id: 4, brand: "Mercedes", model: "C Class", price: "$37,200", image: "Mercedes-Benz/C-class/coupe/c2.jfif" },
-        { id: 5, brand: "Audi", model: "S8", price: "$65,000", image: "Audi/A8/s8/a1.jfif" },
-        { id: 6, brand: "Audi", model: "A6", price: "$41,500", image: "Audi/A6/normal/a.jfif"}
-
-    ];
-
-
     function renderFavorites() {
         const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
         const favoritesContainer = $("#favorites-container");

@@ -170,8 +170,15 @@
     </style>
 </head>
 <body>
-    
-    
+  <div id="Banner"></div>
+  <script>
+    fetch('banner.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('Banner').innerHTML = data;
+      });
+  </script>
+    <script src="banner.js"></script>      
     <header id="hero" class="hero">
         <div class="container">
             <h1>Makina e Ëndrrave, e Sigurt dhe e Lehtë për Ty</h1>
@@ -341,15 +348,5 @@
         });
     </script>
 </head>
-<body>
-    <div id="header"></div>
-<script>
-  fetch('banner.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('header').innerHTML = data;
-    });
-</script>
-<script src="banner.js"></script>
 </body>
 </html>
