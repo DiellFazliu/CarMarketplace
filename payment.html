@@ -10,8 +10,7 @@
         #payments {
     background: #58c25fe0;
     font-family: 'Arial', sans-serif;
-
-    background-image: url('payments foto.webp');
+    background-image: url(payment.webp);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -81,11 +80,11 @@
     </style>
         <section id="payments" style="padding: 80px 20px; border-top: 4px solid #34495e;">
             <div class="payment-container">
-                <h2 class="payment-title">Mënyra e Pagesës</h2>
+                <h2 class="payment-title">Mënyra e Pagesës <img src="visa&mastercard.png" style="max-width: 150px;padding-left: 30px;"></h2>
                 <form id="payment-form" class="payment-form">
                     <div class="form-group">
                         <label for="card-number">Numri i Kartës së Kreditit:</label>
-                        <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                        <input type="text" id="card-number" placeholder="XXXX XXXX XXXX XXXX" maxlength="19" required>
                     </div>
         
                     <div class="form-group">
@@ -109,13 +108,13 @@
         </section>
         <body>
             <div id="Banner"></div>
-            <script>
-                fetch('banner.html')
-                  .then(response => response.text())
-                  .then(data => {
-                    document.getElementById('Banner').innerHTML = data;
-                  });
-              </script>
+    <script>
+        fetch('banner.html')
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById('Banner').innerHTML = data;
+          });
+      </script>
               <script>
                 document.addEventListener('DOMContentLoaded', function () {
                   const script = document.createElement('script');
@@ -164,4 +163,3 @@
                 });
             });
             </script>
-            <script src="banner.js"></script>
