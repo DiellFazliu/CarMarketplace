@@ -4,727 +4,644 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="menubar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <title>Makina</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            font-family: Arial, Helvetica, sans-serif;
-            color: #333;
-        }
 
-        header {
-            position: sticky;
-            top: 0;
-            background-color: #333;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-            z-index: 1000;
-        }
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f9;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #333;
+    }
 
-        main {
-            padding: 20px;
-            margin-left: 25%;
-        }
+    header {
+        position: sticky;
+        top: 0;
+        background-color: #333;
+        color: white;
+        padding: 10px 0;
+        text-align: center;
+        z-index: 1000;
+    }
 
-        .sidebar {
-            position: fixed;
-            width: 20%;
-            height: 100%;
-            padding: 20px;
-            background: rgba(255, 255, 255, 1);
-            border-right: 1px solid #ddd;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            overflow-y: auto;
-        }
+    #container-custom {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: space-between;
+        margin: 20px auto;
+        max-width: 1200px;
+        margin-top: 80px;
+    }
 
-        .sidebar fieldset {
-            border-radius: 10px;
-            padding: 10px;
-            background-color: #f4f4f9;
-            box-sizing: border-box;
-        }
+    .filters-custom {
+        flex: 1 1 30%;
+        min-width: 250px;
+        background-color: white;
+        margin-left: 10px;
+        border-radius: 10px;
+        padding: 10px;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        max-height: fit-content;
+        z-index: 1000;
+        overflow-y: auto;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        height: 100vh;
+        /* Full viewport height */
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
 
-        .sidebar fieldset label {
+    .listings-custom {
+        flex: 1 1 65%;
+        min-width: 500px;
+        margin-left: 30%;
+    }
+
+    .filters-custom h3 {
+        color: #28a745;
+        margin-bottom: 15px;
+    }
+
+    .filters-custom button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .Menu-custom {
+        scrollbar-width: thin;
+        scrollbar-color: #888 #f1f1f1;
+    }
+
+    .Menu-custom::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .Menu-custom::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    .Menu-custom::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 4px;
+    }
+
+    .Menu-custom::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+    .btnMenu-custom {
+        width: 100%;
+        padding: 7px;
+        font-size: 13px;
+        font-weight: bold;
+        background-color: rgba(255, 255, 255, 0.9);
+        color: #2c2b2b;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .btnMenu-custom:hover {
+        background-color: rgba(141, 224, 32, 0.6);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        color: white;
+    }
+
+    .Menu-custom {
+        background-color: #f8f9fa;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    .Menu-custom li {
+        margin: 5px 0;
+    }
+
+    .Menu-custom li a {
+        text-decoration: none;
+        color: black;
+        font-size: 14px;
+    }
+
+    .Menu-custom li a:hover {
+        text-decoration: underline;
+    }
+
+    .extra-part-custom {
+        width: 100px;
+        border: 1px solid #aaa5a5;
+        height: 30%;
+        padding: 6px;
+        background-color: rgba(141, 224, 32, 0.6);
+        border-radius: 10px;
+    }
+
+    .guarantee-section {
+        display: block;
+        margin-top: 5px;
+        width: 95%;
+        background-color: white;
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+        margin-right: 10px;
+    }
+
+    .guarantee-item {
+        text-align: center;
+        margin: 5px 0;
+        padding: 5px;
+        border-bottom: 1px solid #ccc;
+        display: block;
+    }
+
+    .guarantee-item:last-child {
+        border-bottom: none;
+    }
+
+    .guarantee-item img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .guarantee-item h3 {
+        font-size: 0.9rem;
+        margin: 5px 0;
+        color: #333;
+    }
+
+    .guarantee-item p {
+        font-size: 0.5rem;
+        color: #555;
+    }
+
+    .guarantee-item a {
+        display: block;
+        margin-top: 5px;
+        font-size: 0.5rem;
+        color: #007b55;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .guarantee-item a:hover {
+        text-decoration: underline;
+    }
+
+    .card-custom {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        display: flex;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .card-custom img {
+        width: 200px;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .card-custom .details-custom {
+        flex-grow: 1;
+    }
+
+    .card-custom .details-custom h4 {
+        color: #28a745;
+        margin-bottom: 10px;
+    }
+
+    .card-custom .details-custom .tags-custom {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+    }
+
+    .card-custom .details-custom .tags-custom span {
+        background-color: #eaf7e9;
+        color: #28a745;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 0.9rem;
+    }
+
+    .card-custom .details-custom .price-custom {
+        margin-top: 15px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #28a745;
+    }
+
+    .card-custom .details-custom .location-custom,
+    .card-custom .details-custom .monthly-payment-custom {
+        font-size: 0.9rem;
+        color: #555;
+    }
+
+    .card-custom .btn-save-custom {
+        background-color: #28a745;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 4px;
+        display: inline-block;
+        margin-top: 15px;
+    }
+
+    .card-custom .btn-save-custom:hover {
+        background-color: #218838;
+    }
+    .filter-btn{
+        background-color: white;
+        color: #28a745;
+        border: none;
+        border-radius: 10px;
+        text-align: center;
+        
+    }
+    @media  (max-width: 1920px){
+        .filter-btn{
+            display: none;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .filter-btn{
             display: block;
-            margin-top: 10px;
+        }
+        /* Move the guarantee section to the bottom of the page on smaller devices */
+        .guarantee-section {
+            position: relative;
+            margin-top: 20px;
+            margin-right: 0;
         }
 
-        .sidebar button {
-            margin-top: 10px;
+        /* For smaller screens, show the filters as a popup */
+        .filters-custom {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            display: none;
+            /* Hidden by default */
+            z-index: 1001;
+            padding: 15px;
+        }
+
+        .filters-custom.active {
+            display: block;
+        }
+
+        .filters-custom button {
+            width: 100%;
             padding: 10px;
             background-color: rgba(255, 255, 255, 0.9);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .cars-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .car-card {
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 15px;
-            width: calc(25% - 20px);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            background-color: white;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .car-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .car-card img {
-            width: 100%;
-            border-radius: 10px;
-        }
-
-        .car-card ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .car-card ul li {
-            margin-top: 5px;
-        }
-
-        #header {
-            position: sticky;
-            top: 0;
-            width: 100%;
-            height: 100px;
-            z-index: 1000;
-            border: none;
-        }
-
-        @media (max-width: 768px) {
-
-            /* Adjust Sidebar for smaller screens */
-            .sidebar {
-                position: static;
-                /* Make sidebar static */
-                width: 100%;
-                border: none;
-                box-shadow: none;
-                padding: 10px;
-            }
-
-            /* Make main content take full width */
-            main {
-                margin-left: 0;
-                padding: 10px;
-            }
-
-            /* Adjust the width of the car cards */
-            .car-card {
-                width: 100%;
-                /* Full-width on smaller screens */
-            }
-
-            /* Adjust fieldset within sidebar */
-            .sidebar fieldset {
-                width: 100%;
-                /* Ensure fieldset fits the sidebar */
-                padding: 10px;
-            }
-            .extra-part{
-                margin-left: 50px;
-            }
-        }
-
-        /* For screens smaller than 480px */
-        @media (max-width: 480px) {
-            .sidebar {
-                padding: 5px;
-            }
-
-            .sidebar button {
-                font-size: 14px;
-                padding: 8px;
-            }
-
-            .car-card {
-                width: 100%;
-                /* Make car cards full-width for smaller devices */
-            }
-            .extra-part{
-                margin-left: 30px;
-            }
-        }
-
-        .Menu {
-            scrollbar-width: thin;
-            /* For Firefox */
-            scrollbar-color: #888 #f1f1f1;
-            /* Thumb color and track color */
-        }
-
-        /* For WebKit-based browsers */
-        .Menu::-webkit-scrollbar {
-            width: 6px;
-            /* Scrollbar width */
-        }
-
-        .Menu::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            /* Track color */
-            border-radius: 4px;
-        }
-
-        .Menu::-webkit-scrollbar-thumb {
-            background: #888;
-            /* Thumb color */
-            border-radius: 4px;
-        }
-
-        .Menu::-webkit-scrollbar-thumb:hover {
-            background: #555;
-            /* Thumb hover color */
-        }
-
-        .btnMenu {
-            width: 100%;
-            padding: 7px;
-            font-size: 16px;
-            font-weight: bold;
-            background-color: rgba(255, 255, 255, 1);
-            /* Blue background */
-            color: black;
-            border: solid black 2px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s, box-shadow 0.3s;
-        }
-
-        .btnMenu:hover {
-            background-color: rgba(141, 224, 32, 0.6);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            color: white;
-        }
-
-        .Menu {
-            background-color: #f8f9fa;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 10px;
-        }
-
-        .Menu li {
-            margin: 5px 0;
-        }
-
-        .Menu li a {
-            text-decoration: none;
-            color: black;
+            color: #333;
             font-size: 14px;
         }
 
-        .Menu li a:hover {
-            text-decoration: underline;
+        .listings-custom {
+            margin-left: 0;
+            width: 100%;
         }
 
-        .extra-part {
-            margin-top: 30px;
-            margin-left: 0px;
-            width: 20%;
-            border: 1px solid #aaa5a5;
-            height: 30%;
-            padding: 6px;
-            background-color: rgba(141, 224, 32, 0.6);
-            border-radius: 10px;
+        .extra-part-custom {
+            width: 100%;
         }
-    </style>
-</head>
+
+        .guarantee-section {
+            position: static;
+        }
+
+        /* Remove the guarantee section fixed positioning */
+        .guarantee-section {
+            position: relative;
+            margin-top: 20px;
+            margin-right: 0;
+        }
+    }
+
+
+    @media (max-width: 768px) {
+        .filters-custom {
+            width: 100%;
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+
+        .listings-custom {
+            margin-left: 0;
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .filters-custom {
+            width: 100%;
+            padding: 15px;
+            top: 0;
+        }
+
+        .listings-custom {
+            margin-left: 0;
+            width: 100%;
+        }
+
+        .extra-part-custom {
+            width: 100%;
+        }
+    }
+    .filter-btn{
+        margin-top: 100px;
+    }
+</style>
 
 <body>
-    
-<div id="Banner"></div>
-<script>
-    fetch('banner.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('Banner').innerHTML = data;
-      });
-  </script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const script = document.createElement('script');
-      script.src = 'banner.js';
-      document.body.appendChild(script);
-    });
-  </script>
+    <div id="Banner"></div>
+    <script>
+        fetch('banner.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('Banner').innerHTML = data;
+            });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const script = document.createElement('script');
+            script.src = 'banner.js';
+            document.body.appendChild(script);
+        });
+    </script>
+    <button class="filter-btn">Show Filters</button>
+    <div id="container-custom">
+        <div class="filters-custom">
+            <div class="still">
+                <h3>Filter Options</h3>
+                <div class="horizontale-custom">
+                    <div>
+                        <button class="btnMenu-custom" id="brandButton-custom">Brand
+                            &nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &#9660;</button>
+                        <ul style="list-style: none; padding: 0; margin: 0; display: none; max-height: 100px; overflow-y: scroll; border: 1px solid #ddd;"
+                            class="Menu-custom" id="brandMenu-custom"> <!-- corrected id attribute -->
+                            <li><a href="#" data-brand="Mercedes">Mercedes Benz</a></li>
+                            <li><a href="#" data-brand="Audi">Audi</a></li>
+                            <li><a href="#" data-brand="BMW">BMW</a></li>
+                            <li><a href="#" data-brand="Porche">Porche</a></li>
+                            <li><a href="#" data-brand="Rolls Royce">Rolls Royce</a></li>
+                        </ul>
 
+                    </div>
+                    <div>
+                        <button class="btnMenu-custom"
+                            id="modelButton-custom">Model&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &#9660;</button>
+                        <ul style="list-style: none; padding: 0; margin: 0; display: none; max-height: 150px; overflow-y: scroll; border: 1px solid #ddd;"
+                            class="Menu-custom" id="modelMenu-custom">
+                            <!-- The model list will be dynamically populated -->
+                        </ul>
+                    </div>
+                </div>
+                <script>
+                    $(document).ready(function () {
+                        let selectedBrand = "";
+                        let selectedModel = "";
 
-    <div class="sidebar">
-        <fieldset>
-            <div>
-                <button class="btnMenu" id="brandButton" style="color: black;">Brand
-                    &nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &#9660;</button>
-                <ul style="list-style: none; padding: 0; margin: 0; display: none; max-height: 100px; overflow-y: scroll; border: 1px solid #ddd;"
-                    class="Menu" id="brandMenu">
-                    <li><a href="#" data-brand="Mercedes">Mercedes Benz</a></li>
-                    <li><a href="#" data-brand="Audi">Audi</a></li>
-                    <li><a href="#" data-brand="BMW">BMW</a></li>
-                    <li><a href="#" data-brand="Porche">Porche</a></li>
-                    <li><a href="#" data-brand="Rolls Royce">Rolls Royce</a></li>
-                </ul>
-            </div>
-            <div>
-                <button class="btnMenu" id="modelButton"
-                    style="color: black;">Model&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &#9660;</button>
-                <ul style="list-style: none; padding: 0; margin: 0; display: none; max-height: 150px; overflow-y: scroll; border: 1px solid #ddd;"
-                    class="Menu" id="modelMenu">
+                        // Toggle Filters Popup
+                        $(".filter-btn").click(function () {
+                            $(".filters-custom").toggleClass("active");
+                        });
 
-                </ul>
-            </div>
-            <script>
-                $(document).ready(function () {
-                    let selectedBrand = "";
-                    let selectedModel = "";
+                        // Define models for each brand
+                        const models = {
+                            Mercedes: ["A Class", "B Class", "C Class", "E Class", "S Class", "GLA", "GLB", "GLE", "GLS", "Maybach"],
+                            Audi: ["A1", "A3", "A4", "A5", "A6", "A7", "A8L", "Q2", "Q3", "Q5", "Q7", "Q8", "E-tron"],
+                            BMW: ["Series 1", "Series 3", "Series 4", "Series 5", "X1", "X2", "X3", "X4", "X5", "X6", "X7", "I7"],
+                            Porsche: ["Cayman", "Spyder", "Carrera", "GT3", "GT3-RS", "Taycan", "Panamera", "Cayene"],
+                            "Rolls Royce": ["Phantom", "Spectre", "Cullinan"]
+                        };
 
-                    const models = {
-                        Mercedes: ["C Class", "E Class", "S Class", "G Class"],
-                        Audi: ["A3", "A6", "A7", "A8"],
-                        BMW: ["Series 3", "Series 4", "Series 7", "Series 8"],
-                        Porsche: ["991", "992", "Taycan"],
-                        "Rolls Royce": ["Phantom", "Ghost", "Wraith", "Dawn"]
-                    };
+                        // Define combinations mapping (brand-model to URL)
+                        const combinations = {
+                            "mercedes": "mercedes.html",  // Brand-only page
+                            "mercedes-a-class": "mercedes-a-class.html",
+                            "mercedes-b-class": "mercedes-b-class.html",
+                            "audi": "audi.html",  // Brand-only page
+                            "audi-a1": "audi-a1.html",
+                            "audi-a3": "audi-a3.html",
+                            "bmw": "bmw.html",  // Brand-only page
+                            "bmw-series-1": "bmw-series-1.html",
+                            "porsche": "porsche.html",  // Brand-only page
+                            "porsche-cayman": "porsche-cayman.html",
+                            "rolls-royce": "rolls-royce.html",  // Brand-only page
+                            "rolls-royce-phantom": "rolls-royce-phantom.html"
+                        };
 
-               
-                    const combinations = {
-                        "mercedes": "mercedes.html",  
-                        "mercedes-a-class": "mercedes-a-class.html",
-                        "mercedes-b-class": "mercedes-b-class.html",
-                        "audi": "audi.html", 
-                        "audi-a1": "audi-a1.html",
-                        "audi-a3": "audi-a3.html",
-                        "bmw": "bmw.html",  
-                        "bmw-series-1": "bmw-series-1.html",
-                        "porsche": "porsche.html",
-                        "porsche-cayman": "porsche-cayman.html",
-                        "rolls-royce": "rolls-royce.html", 
-                        "rolls-royce-phantom": "rolls-royce-phantom.html"
-                    };
+                        // Update selected brand
+                        $("#brandMenu-custom a").click(function (e) {
+                            e.preventDefault();
+                            selectedBrand = $(this).data("brand");
+                            $("#brandButton-custom").text(selectedBrand); // Update button text
+                            $("#brandMenu-custom").slideUp(500); // Close Brand menu
 
-                    
-                    $("#brandMenu a").click(function (e) {
-                        e.preventDefault();
-                        selectedBrand = $(this).data("brand");
-                        $("#brandButton").text(selectedBrand); 
-                        $("#brandMenu").slideUp(500); 
+                            // Populate Model menu based on selected brand
+                            const modelList = models[selectedBrand] || [];
+                            const modelItems = modelList.map(model => `<li><a href="#">${model}</a></li>`).join("");
+                            $("#modelMenu-custom").html(modelItems);
+                            $("#modelButton-custom").text("Model"); // Reset Model button text
 
-                        const modelList = models[selectedBrand] || [];
-                        const modelItems = modelList.map(model => `<li><a href="#">${model}</a></li>`).join("");
-                        $("#modelMenu").html(modelItems);
-                        $("#modelButton").text("Model");
-              
-                        $("#extrapart").val("Search " + selectedBrand); 
-                    });
+                            // Update the extrapart button text with the selected brand
+                            $("#extrapart-custom").val("Search " + selectedBrand); // Update input value dynamically
+                        });
 
-                    $("#modelMenu").on("click", "a", function (e) {
-                        e.preventDefault();
-                        selectedModel = $(this).text();
-                        $("#modelButton").text(selectedModel); 
-                        $("#modelMenu").slideUp(500); 
+                        // Update selected model
+                        $("#modelMenu-custom").on("click", "a", function (e) {
+                            e.preventDefault();
+                            selectedModel = $(this).text();
+                            $("#modelButton-custom").text(selectedModel); // Update model button text
+                            $("#modelMenu-custom").slideUp(500); // Close model menu
 
-                    });
+                            // Update the extrapart button text with the selected model
+                            $("#extrapart-custom").val("Search " + selectedBrand + " " + selectedModel); // Update input value dynamically
+                        });
 
-                    $("#extrapart").click(function () {
-                        if (selectedBrand) {
+                        // Handle Search button click and redirect
+                        $("#extrapart-custom").click(function () {
+                            if (selectedBrand) {
+                                // Create the key for the brand-model combination
+                                let key = selectedBrand.toLowerCase().replace(/\s+/g, '-');
 
-                            let key = selectedBrand.toLowerCase().replace(/\s+/g, '-');
+                                // If model is selected, add model to the key
+                                if (selectedModel) {
+                                    key += '-' + selectedModel.toLowerCase().replace(/\s+/g, '-');
+                                }
 
-                            if (selectedModel) {
-                                key += '-' + selectedModel.toLowerCase().replace(/\s+/g, '-');
-                            }
-
-                            if (combinations[key]) {
-                                window.location.href = combinations[key]; 
+                                // Check if the combination exists in the mapping
+                                if (combinations[key]) {
+                                    window.location.href = combinations[key]; // Redirect to the corresponding page
+                                } else {
+                                    alert("No page found for this combination. Please select a valid brand and model.");
+                                }
                             } else {
-                                alert("No page found for this combination. Please select a valid brand and model.");
+                                alert("Please select a brand.");
                             }
-                        } else {
-                            alert("Please select a brand.");
+                        });
+
+                        // Toggle Brand and Model menus
+                        $(".btnMenu-custom").click(function () {
+                            const menuId = $(this).attr("id").replace("Button-custom", "Menu-custom");
+                            $(".Menu-custom").not(`#${menuId}`).slideUp(500); // Close other menus
+                            $(`#${menuId}`).stop(true, true).slideToggle(500); // Toggle the clicked menu
+                        });
+                    });
+
+                </script>
+
+
+                </script>
+                <input id="extrapart-custom" class="extra-part-custom" type="submit" value="23049 total results"
+                    style="height: 32px; width: 170px; border:#8de020">
+                <script>$(".extra-part").css("background-color");
+                    $(".extra-part").css({
+                        "background-color": "rgba(141,224,32,1)",
+                        "color": "white"
+                    });
+                    $(".extra-part").on("mouseenter",
+                        function () {
+                            $(".extra-part").css("background-color", "rgba(141,224,32,1)");
                         }
-                    });
-
-                    $(".btnMenu").click(function () {
-                        const menuId = $(this).attr("id").replace("Button", "Menu");
-                        $(".Menu").not(`#${menuId}`).slideUp(500); 
-                        $(`#${menuId}`).stop(true, true).slideToggle(500); 
-                    });
-                });
-            </script>
-
-            <input id="extrapart" class="extra-part" type="submit" value="23049 total results"
-                style="height: 32px; width: 170px; border:#8de020">
-            <script>$(".extra-part").css("background-color");
-                $(".extra-part").css({
-                    "background-color": "rgba(141,224,32,1)",
-                    "color": "white"
-                });
-                $(".extra-part").on("mouseenter",
-                    function () {
-                        $(".extra-part").css("background-color", "rgba(141,224,32,1)");
-                    }
-                )
-                $(".extra-part").on("mouseleave",
-                    function () {
-                        $(".extra-part").css("background-color", "rgba(141,224,32,0.7");
-                    }
-                )
-            </script>
-        </fieldset>
-
-    </div>
-
-    <main>
-        <div class="cars-container">
-            <div class="car-card">
-                <img src="Audi/A3/normal/a.jfif" alt="Audi A3">
-                <h3>Audi A3 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 10,000 km</li>
-                    <li>Numri i ulëseve: 4</li>
-                    <li>Çmimi: 100,000 €</li>
-                </ul>
+                    )
+                    $(".extra-part").on("mouseleave",
+                        function () {
+                            $(".extra-part").css("background-color", "rgba(141,224,32,0.7");
+                        }
+                    )
+                </script>
             </div>
-
-            <div class="car-card">
-                <img src="Audi/A3/kabriolet/a.jfif" alt="Audi A3 Kabriolet">
-                <h3>Audi A3 Kabriolet</h3>
-                <ul>
-                    <li>Kilometrazhi: 12,000 km</li>
-                    <li>Numri i ulëseve: 4</li>
-                    <li>Çmimi: 110,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="Audi/A6/normal/a.jfif" alt="Audi A6">
-                <h3>Audi A8 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 8,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 150,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="Audi/A6/rs6/a.jfif" alt="Audi RS6">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="Audi/A7/normal/a.jfif" alt="Audi A7">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="Audi/A7/rs7/a.jfif" alt="Audi RS7">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="Audi/A8/normal/a.jfif" alt="Audi A8">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="Audi/A8/s8/a.jfif" alt="Audi S8">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="Mercedes-Benz/C-class/coupe/c.jfif" alt="Mercedes C coupe">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="Mercedes-Benz/C-class/karavan/c.jfif" alt="Mercedes C karavan">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="Mercedes-Benz/C-class/normal/c.jfif" alt="Mercedes C">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="Mercedes-Benz/E-class/coupe/e.jfif" alt="Mercedes E coupe">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="Mercedes-Benz/E-class/karavan/e.jfif" alt="Mercedes E karavan">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="Mercedes-Benz/E-class/normal/e.jfif" alt="Mercedes E">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="Mercedes-Benz/G-class/blue/g.jfif" alt="Mercedes G blue">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="Mercedes-Benz/G-class/normal/g.jfif" alt="Mercedes G">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="Mercedes-Benz/S-class/coupe/s.jfif" alt="Mercedes S coupe">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="Mercedes-Benz/S-class/normal/s.jfif" alt="Mercedes S">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="BMW/M3/normal/b.jpg" alt="BMW 3">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="BMW/M3/m3/b.jpg" alt="BMW M3">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="BMW/M4/coupe/b.jpg" alt="BMW 4 coupe">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="BMW/M4/m4/b.jpg" alt="BMW M4">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="BMW/M7/m sport/b.jpg" alt="BMW 7 msport">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="BMW/M7/2024/b.jpg" alt="BMW 7 2024">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="BMW/M8/coupe/b.jpg" alt="BMW 8 coupe">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="BMW/M8/normal/b.jpg" alt="BMW 8">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="Porsche/911/991/p.jpg" alt="Porsche 991">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="Porsche/911/992/p.jpg" alt="Porsche 992">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="Porsche/taycan/p.jpg" alt="Porsche Taycan">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="Rolls Royce/ghost/r.jpg" alt="RR Ghost">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="Rolls Royce/wraith/r.jpg" alt="RR wraith">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="Rolls Royce/phantom/r.jpg" alt="RR Phantom">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
-            </div>
-
-            <div class="car-card">
-                <img src="Rolls Royce/dawn/r.jpg" alt="RR Dawn">
-                <h3>Audi A7 Black ABS</h3>
-                <ul>
-                    <li>Kilometrazhi: 5,000 km</li>
-                    <li>Numri i ulëseve: 5</li>
-                    <li>Çmimi: 120,000 €</li>
-                </ul>
+            <div class="guarantee-section">
+                <div class="guarantee-item">
+                    <img src="car-logos/shield.png" alt="Icon">
+                    <h3>Kthim të parave</h3>
+                    <p>Nëse nuk ju pëlqen vetura, kthejeni brenda 14 ditëve.</p>
+                </div>
+                <div class="guarantee-item">
+                    <img src="car-logos/shield.png" alt="Icon">
+                    <h3>Blerje e sigurt</h3>
+                    <p>Ne garantojmë gjendjen teknike të çdo veture.</p>
+                </div>
+                <div class="guarantee-item">
+                    <img src="car-logos/shield.png" alt="Icon">
+                    <h3>6 muaj garancion</h3>
+                    <p>Ofrojmë çdo veturë me garancion.</p>
+                    <a href="#">Më shumë rreth garancive &rarr;</a>
+                </div>
             </div>
         </div>
-    </main>
+        <div class="listings-custom">
+            <div class="card-custom">
+                <img src="Audi/A3/kabriolet/a.jfif" alt="Rolls-Royce Dawn">
+                <div class="details-custom">
+                    <h4>Rolls-Royce Dawn 420 kW</h4>
+                    <p>13,500 km | 03/2018 | 420 kW (571 hp) | Automatic | Petrol</p>
+                    <div class="tags-custom">
+                        <span>Ulese te soferta</span>
+                        <span>Funksion masazhi</span>
+                        <span>Pneumatic suspension</span>
+                        <span>+7 more</span>
+                    </div>
+                    <p class="location-custom">Germany, transport: 757€</p>
+                    <p class="monthly-payment-custom">Monthly payment: 7,529€</p>
+                    <p class="price-custom">509,196€</p>
+                </div>
+            </div>
+
+            <div class="card-custom">
+                <img src="Audi/A3/kabriolet/a.jfif" alt="Rolls-Royce Dawn">
+                <div class="details-custom">
+                    <h4>Rolls-Royce Dawn 420 kW</h4>
+                    <p>13,500 km | 03/2018 | 420 kW (571 hp) | Automatic | Petrol</p>
+                    <div class="tags-custom">
+                        <span>Ulese te soferta</span>
+                        <span>Funksion masazhi</span>
+                        <span>Pneumatic suspension</span>
+                        <span>+7 more</span>
+                    </div>
+                    <p class="location-custom">Germany, transport: 757€</p>
+                    <p class="monthly-payment-custom">Monthly payment: 7,529€</p>
+                    <p class="price-custom">509,196€</p>
+                </div>
+            </div>
+            <div class="card-custom">
+                <img src="Audi/A3/kabriolet/a.jfif" alt="Rolls-Royce Dawn">
+                <div class="details-custom">
+                    <h4>Rolls-Royce Dawn 420 kW</h4>
+                    <p>13,500 km | 03/2018 | 420 kW (571 hp) | Automatic | Petrol</p>
+                    <div class="tags-custom">
+                        <span>Ulese te soferta</span>
+                        <span>Funksion masazhi</span>
+                        <span>Pneumatic suspension</span>
+                        <span>+7 more</span>
+                    </div>
+                    <p class="location-custom">Germany, transport: 757€</p>
+                    <p class="monthly-payment-custom">Monthly payment: 7,529€</p>
+                    <p class="price-custom">509,196€</p>
+                </div>
+            </div>
+            <div class="card-custom">
+                <img src="Audi/A3/kabriolet/a.jfif" alt="Rolls-Royce Dawn">
+                <div class="details-custom">
+                    <h4>Rolls-Royce Dawn 420 kW</h4>
+                    <p>13,500 km | 03/2018 | 420 kW (571 hp) | Automatic | Petrol</p>
+                    <div class="tags-custom">
+                        <span>Ulese te soferta</span>
+                        <span>Funksion masazhi</span>
+                        <span>Pneumatic suspension</span>
+                        <span>+7 more</span>
+                    </div>
+                    <p class="location-custom">Germany, transport: 757€</p>
+                    <p class="monthly-payment-custom">Monthly payment: 7,529€</p>
+                    <p class="price-custom">509,196€</p>
+                </div>
+            </div>
+            <div class="card-custom">
+                <img src="Audi/A3/kabriolet/a.jfif" alt="Rolls-Royce Dawn">
+                <div class="details-custom">
+                    <h4>Rolls-Royce Dawn 420 kW</h4>
+                    <p>13,500 km | 03/2018 | 420 kW (571 hp) | Automatic | Petrol</p>
+                    <div class="tags-custom">
+                        <span>Ulese te soferta</span>
+                        <span>Funksion masazhi</span>
+                        <span>Pneumatic suspension</span>
+                        <span>+7 more</span>
+                    </div>
+                    <p class="location-custom">Germany, transport: 757€</p>
+                    <p class="monthly-payment-custom">Monthly payment: 7,529€</p>
+                    <p class="price-custom">509,196€</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>
