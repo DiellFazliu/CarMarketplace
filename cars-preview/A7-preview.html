@@ -291,7 +291,7 @@
             border-radius: 10px;
             padding: 20px;
             width: 100%;
-            margin-top: -50px;
+            margin-top: 20px;
             max-width: 1200px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
@@ -404,7 +404,7 @@
 <body>
     <div id="header" style="position: absolute; top: auto; left: auto;width: 100%; padding: 10px 0;"></div>
     <script>
-        fetch('./banner.html') // Kontrolloni rrugën
+        fetch('./../banner.html') // Kontrolloni rrugën
             .then(response => {
                 if (!response.ok) throw new Error("Failed to fetch banner.html");
                 return response.text();
@@ -430,27 +430,27 @@
         });
     </script>
 
-    <p id="titulli">Audi A3 Cabriolet</p>
+    <p id="titulli">Audi A7 Sportback</p>
     <div class="logos">
         <div>
-            <img class="logot" src="car-logos/engine.png">
-            <p>2.0 Diesel(180Ps)</p>
+            <img class="logot" src="../car-logos/engine.png">
+            <p>3.0 (340Hp)</p>
         </div>
         <div>
-            <img class="logot" src="car-logos/transmission.png">
+            <img class="logot" src="../car-logos/transmission.png">
             <p>Automatic</p>
         </div>
         <div>
-            <img class="logot" src="car-logos/fuel.png">
-            <p>Diesel</p>
+            <img class="logot" src="../car-logos/fuel.png">
+            <p>Benzinë</p>
         </div>
         <div>
-            <img class="logot" src="car-logos/road.png">
-            <p>100000km</p>
+            <img class="logot" src="../car-logos/road.png">
+            <p>28.000km</p>
         </div>
         <div>
-            <img class="logot" src="car-logos/calendar.png">
-            <p>08/2021</p>
+            <img class="logot" src="../car-logos/calendar.png">
+            <p>06/2021</p>
         </div>
     </div>
 
@@ -458,10 +458,15 @@
         <div class="left-content">
             <div class="left-content-up">
                 <div class="slideshow">
-                    <img src="Audi/A3/normal/a.jfif" alt="Slide 1" class="active" onclick="openSlide(1)">
-                    <img src="Audi/A3/normal/a1.jfif" alt="Slide 2" onclick="openSlide(2)">
-                    <img src="Audi/A3/normal/a2.jfif" alt="Slide 3" onclick="openSlide(3)">
-                    <img src="Audi/A3/normal/a3.jfif" alt="Slide 4" onclick="openSlide(4)">
+                    <img src="../Audi/A7/normal/a.jfif" alt="Slide 1" class="active" onclick="openSlide(1)">
+                    <img src="../Audi/A7/normal/a.jfif" alt="Slide 2" onclick="openSlide(2)">
+                    <img src="../Audi/A7/normal/a2.jfif" alt="Slide 3" onclick="openSlide(3)">
+                    <img src="../Audi/A7/normal/a3.jfif" alt="Slide 4" onclick="openSlide(4)">
+                    <img src="../Audi/A7/normal/a4.jfif" alt="Slide 5" onclick="openSlide(5)">
+                    <img src="../Audi/A7/normal/a5.jfif" alt="Slide 6" onclick="openSlide(6)">
+                    <img src="../Audi/A7/normal/a6.jfif" alt="Slide 7" onclick="openSlide(7)">
+                    <img src="../Audi/A7/normal/a7.jfif" alt="Slide 8" onclick="openSlide(8)">
+                    <img src="../Audi/A7/normal/a8.jfif" alt="Slide 9" onclick="openSlide(9)">
                 </div>
                 
                 <script>
@@ -507,28 +512,28 @@
             <div class="left-content-down">
                 <div class="right">
                     <ul>
-                        <li><strong>Motor:</strong> <span>6.6L V12</span></li>
-                        <li><strong>Fuqia:</strong> <span>420 kW</span></li>
+                        <li><strong>Motor:</strong> <span>3.0 V6</span></li>
+                        <li><strong>Fuqia:</strong> <span>300 Hp</span></li>
                         <li><strong>Transmisioni:</strong> <span>Automatik</span></li>
                         <li><strong>Karburanti:</strong> <span>Benzinë</span></li>
                         <li><strong>Viti:</strong> <span>2021</span></li>
-                        <li><strong>Kilometrazhi:</strong> <span>30,000 km</span></li>
+                        <li><strong>Kilometrazhi:</strong> <span>28000 km</span></li>
                     </ul>
                 </div>
             </div>
             <div class="guarantee-section">
                 <div class="guarantee-item">
-                    <img src="car-logos/shield.png" alt="Icon">
+                    <img src="../car-logos/shield.png" alt="Icon">
                     <h3>Kthim të parave</h3>
                     <p>Nëse nuk ju pëlqen vetura, kthejeni brenda 14 ditëve.</p>
                 </div>
                 <div class="guarantee-item">
-                    <img src="car-logos/shield.png" alt="Icon">
+                    <img src="../car-logos/shield.png" alt="Icon">
                     <h3>Blerje e sigurt</h3>
                     <p>Ne garantojmë gjendjen teknike të çdo veture.</p>
                 </div>
                 <div class="guarantee-item">
-                    <img src="car-logos/shield.png" alt="Icon">
+                    <img src="../car-logos/shield.png" alt="Icon">
                     <h3>6 muaj garancion</h3>
                     <p>Ofrojmë çdo veturë me garancion.</p>
                     <a href="#">Më shumë rreth garancive &rarr;</a>
@@ -537,34 +542,26 @@
         </div>
         <div class="right-content">
             <div class="right-content-up">
-                <p><b>Audi A3 Cabriolet: Eleganca dhe Performanca në Qiell të Hapur</b><br><br>
+                <p><b>Audi A7 Sportback 2021</b> është një sedan sportiv luksoz që ofron një dizajn të mahnitshëm dhe performancë të jashtëzakonshme. Ja një përshkrim i shkurtër:
 
-                    Audi A3 Cabriolet është një nga makinat më tërheqëse dhe elegante të klasës kompakte luksoze, e
-                    krijuar
-                    për të ofruar një eksperiencë të paharrueshme drejtimi nën qiell të hapur. Ky model kombinon
-                    mjeshtërisht
-                    dizajnin modern, teknologjinë më të fundit dhe performancën e fuqishme për të kënaqur si drejtuesin
-                    ashtu
-                    edhe pasagjerët.
-
-                    <br><b>Dizajni</b><br>
-                    Audi A3 Cabriolet ka një pamje dinamike dhe sportive, me linja të pastra dhe proporcione perfekte.
-                    Kabina e saj e hapur shton ndjesinë e luksit, ndërsa tavanin e butë me palosje automatike mund ta
-                    hapni
-                    ose mbyllni brenda vetëm 18 sekondave, edhe kur makina është në lëvizje deri në 50 km/h.
-
-                    <br><b>Performanca</b><br>
-                    Nën kapak, Audi A3 Cabriolet vjen me një gamë motorësh të fuqishëm dhe efikas, duke përfshirë
-                    opsione
-                    benzine dhe nafte.
-                </p>
+                    <br><br><b>Performanca:</b><br>
+                     Motori: 3.0L V6 TDI me 286 hp dhe 600 Nm moment rrotullimi, ose 3.0L V6 TFSI me 340 hp.
+                     Transmetimi: Automatik 7-shpejtësi S tronic, me mundësi për all-wheel drive (Quattro).
+                     Shpejtësia: Arrin 0-100 km/h në 5.2 sekonda (për versionin V6 TFSI).
+                    <br><br><b>Dizajni:</b><br>
+                     Pamja e jashtme: Grilë frontale Singleframe, dritat Matrix LED, dhe linja të mprehta që i japin një pamje dinamike dhe elegante.
+                     Pamja e brendshme: Materiale premium, ekran MMI Touch, dhe opsion për Virtual Cockpit që ofron një pamje moderne dhe të pastër.
+                    <br><br><b>Karakteristikat:</b><br>
+                     Teknologji: Apple CarPlay, Android Auto, dhe mundësi për sistemin audio Bang & Olufsen.
+                     Siguria: Audi Pre-Sense, Lane Assist, dhe Adaptive Cruise Control për siguri të lartë dhe asistencë të avancuar në vozitje.
+                 </p>
             </div>
             <div class="pricing-container">
                 <div class="pricing-header">
                     <h2>Çmimi pa doganë</h2>
-                    <div class="price">390 423 €</div>
+                    <div class="price">57 500€</div>
                     <button class="btn">Blej</button>
-                    <div class="financing">Financim 8 321 €/muaj</div>
+                    <div class="financing">Financim 650 €/muaj</div>
                 </div>
 
                 <div class="services">
@@ -575,7 +572,7 @@
                     </div>
                     <div class="service-item">
                         <span>Pika e dorëzimit Prishtina, Kosovo</span>
-                        <span>757 €</span>
+                        <span>750 €</span>
                     </div>
                     <div class="service-item">
                         <span>Regjistrimi i veturës <span class="info">(i)</span></span>
@@ -587,7 +584,7 @@
                     </div>
                     <div class="service-item">
                         <span>Dogana <span class="info">(i)</span></span>
-                        <span>40 118 €</span>
+                        <span>17 118 €</span>
                     </div>
                     <div class="service-item">
                         <span>Garancion</span>
@@ -596,7 +593,7 @@
 
                     <div class="total">
                         <span>Totali për pagesë</span>
-                        <span>509 196 €</span>
+                        <span>75 620 €</span>
                     </div>
                 </div>
             </div>
