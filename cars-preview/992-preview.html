@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <title>Preview</title>
     <style>
         * {
@@ -14,15 +16,32 @@
 
         body {
             font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
             color: #333;
             background-color: #f4f4f9;
+        }
+
+        /* Header */
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 24px;
+            font-weight: bold;
         }
 
         /* Title */
         #titulli {
             font-size: 2.5rem;
             text-align: center;
-            margin: 30px 100px 10px;
+            margin: 60px 100px 10px;
             color: #000;
         }
 
@@ -291,7 +310,7 @@
             border-radius: 10px;
             padding: 20px;
             width: 100%;
-            margin-top: 20px;
+            margin-top: -50px;
             max-width: 1200px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
@@ -343,22 +362,6 @@
         .guarantee-item a:hover {
             text-decoration: underline;
         }
-        #previousPage {
-        padding: 10px 20px;
-        background-color: #f4f4f9;
-        color: green;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        margin: 20px;
-        margin-top: 60px;
-        margin-bottom: -100px;
-    }
-
-    #previousPage:hover {
-        color: #8dde20;
-    }
 
         /* Footer */
         footer {
@@ -402,55 +405,43 @@
 </head>
 
 <body>
-    <div id="header" style="position: absolute; top: auto; left: auto;width: 100%; padding: 10px 0;"></div>
+    <div id="Banner"></div>
     <script>
-        fetch('./../banner.html') // Kontrolloni rrugën
-            .then(response => {
-                if (!response.ok) throw new Error("Failed to fetch banner.html");
-                return response.text();
-            })
-            .then(data => {
-                document.getElementById('header').innerHTML = data;
-            })
-            .catch(error => console.error(error));
-    </script>
-    <script>
+        fetch('banner.html')
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById('Banner').innerHTML = data;
+          });
+      </script>
+      <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const script = document.createElement('script');
-            script.src = 'banner.js';
-            document.body.appendChild(script);
+          const script = document.createElement('script');
+          script.src = 'banner.js';
+          document.body.appendChild(script);
         });
-    </script>
-    <div>
-        <button id="previousPage">Previous Page</button>
-    </div>
-    <script>
-        document.getElementById('previousPage').addEventListener('click', function () {
-            window.history.back();
-        });
-    </script>
+      </script>
 
-    <p id="titulli">Porsche 911 992 Turbo 2021</p>
+    <p id="titulli">Audi A3 Cabriolet</p>
     <div class="logos">
         <div>
-            <img class="logot" src="../car-logos/engine.png">
-            <p>3.8 (580Hp)</p>
+            <img class="logot" src="car-logos/engine.png">
+            <p>2.0 Diesel(180Ps)</p>
         </div>
         <div>
-            <img class="logot" src="../car-logos/transmission.png">
+            <img class="logot" src="car-logos/transmission.png">
             <p>Automatic</p>
         </div>
         <div>
-            <img class="logot" src="../car-logos/fuel.png">
-            <p>Benzinë</p>
+            <img class="logot" src="car-logos/fuel.png">
+            <p>Diesel</p>
         </div>
         <div>
-            <img class="logot" src="../car-logos/road.png">
-            <p>14000km</p>
+            <img class="logot" src="car-logos/road.png">
+            <p>100000km</p>
         </div>
         <div>
-            <img class="logot" src="../car-logos/calendar.png">
-            <p>01/2021</p>
+            <img class="logot" src="car-logos/calendar.png">
+            <p>08/2021</p>
         </div>
     </div>
 
@@ -458,13 +449,13 @@
         <div class="left-content">
             <div class="left-content-up">
                 <div class="slideshow">
-                    <img src="../Porsche/911/992/p.jpg" alt="Slide 1" class="active" onclick="openSlide(1)">
-                    <img src="../Porsche/911/992/p1.jpg " alt="Slide 2" onclick="openSlide(2)">
-                    <img src="../Porsche/911/992/p2.jpg " alt="Slide 3" onclick="openSlide(3)">
-                    <img src="../Porsche/911/992/p3.jpg " alt="Slide 4" onclick="openSlide(4)">
-                    <img src="../Porsche/911/992/p4.jpg " alt="Slide 5" onclick="openSlide(5)">
-                    <img src="../Porsche/911/992/p5.jpg " alt="Slide 6" onclick="openSlide(6)">
+                    <img src="Audi/A3/kabriolet/a.jfif" alt="Slide 1" class="active">
+                    <img src="Audi/A3/kabriolet/a1.jfif" alt="Slide 2">
+                    <img src="Audi/A3/kabriolet/a2.jfif" alt="Slide 3">
+                    <img src="Audi/A3/kabriolet/a3.jfif" alt="Slide 4">
                 </div>
+<<<<<<< HEAD
+=======
                 
                 <script>
                     function openSlide(slideNumber) {
@@ -473,6 +464,7 @@
                         window.location.href = fullUrl;
                     }
                 </script>
+>>>>>>> e48b517e355337484a8114ef3315773123dc7f69
 
                 <div class="controls">
                     <button id="prev">Previous</button>
@@ -509,28 +501,28 @@
             <div class="left-content-down">
                 <div class="right">
                     <ul>
-                        <li><strong>Motor:</strong> <span>3.8 V6</span></li>
-                        <li><strong>Fuqia:</strong> <span>580 Hp</span></li>
+                        <li><strong>Motor:</strong> <span>6.6L V12</span></li>
+                        <li><strong>Fuqia:</strong> <span>420 kW</span></li>
                         <li><strong>Transmisioni:</strong> <span>Automatik</span></li>
                         <li><strong>Karburanti:</strong> <span>Benzinë</span></li>
                         <li><strong>Viti:</strong> <span>2021</span></li>
-                        <li><strong>Kilometrazhi:</strong> <span>14000 km</span></li>
+                        <li><strong>Kilometrazhi:</strong> <span>30,000 km</span></li>
                     </ul>
                 </div>
             </div>
             <div class="guarantee-section">
                 <div class="guarantee-item">
-                    <img src="../car-logos/shield.png" alt="Icon">
+                    <img src="car-logos/shield.png" alt="Icon">
                     <h3>Kthim të parave</h3>
                     <p>Nëse nuk ju pëlqen vetura, kthejeni brenda 14 ditëve.</p>
                 </div>
                 <div class="guarantee-item">
-                    <img src="../car-logos/shield.png" alt="Icon">
+                    <img src="car-logos/shield.png" alt="Icon">
                     <h3>Blerje e sigurt</h3>
                     <p>Ne garantojmë gjendjen teknike të çdo veture.</p>
                 </div>
                 <div class="guarantee-item">
-                    <img src="../car-logos/shield.png" alt="Icon">
+                    <img src="car-logos/shield.png" alt="Icon">
                     <h3>6 muaj garancion</h3>
                     <p>Ofrojmë çdo veturë me garancion.</p>
                     <a href="#">Më shumë rreth garancive &rarr;</a>
@@ -539,27 +531,40 @@
         </div>
         <div class="right-content">
             <div class="right-content-up">
-                <p><b>Porsche 911 992 Turbo 2021</b> është një sportiv i pasionuar që ofron performancë të papërshkrueshme dhe një dizajn elegant dhe aerodinamik. Ja një përshkrim i shkurtër:
+                <p><b>Audi A3 Cabriolet: Eleganca dhe Performanca në Qiell të Hapur</b><br><br>
 
-                    <br><br><b>Performanca:</b><br>
-                     Motori: 3.8L Twin-turbocharged 6-cylindërsh me 580 hp dhe 750 Nm moment rrotullimi.
-                     Transmetimi: Automatik 8-shpejtësi PDK, me mundësi për all-wheel drive (AWD).
-                     Shpejtësia: Arrin 0-100 km/h në 2.8 sekonda.
-                    <br><br><b>Dizajni:</b><br>
-                     Pamja e jashtme: Grilë frontale të mprehtë, dritat LED Matrix, dhe linja aerodinamike për një pamje moderne dhe sportive.
-                     Pamja e brendshme: Kabinë luksoze dhe moderne me materiale të cilësisë së lartë, sedilje sportivë dhe një ekran i avancuar për komandat dhe infotainment.
-                    <br><br><b>Karakteristikat:</b><br>
-                     Teknologji: Apple CarPlay, Android Auto, dhe mundësi për sistemin audio Burmester për tingull të pasur dhe cilësi të lartë.
-                     Siguria: Porsche Stability Management, Porsche Dynamic Chassis Control dhe sisteme asistence për një përvojë të sigurt dhe emocionuese drejtimi.
-                 </p>
+                    Audi A3 Cabriolet është një nga makinat më tërheqëse dhe elegante të klasës kompakte luksoze, e
+                    krijuar
+                    për të ofruar një eksperiencë të paharrueshme drejtimi nën qiell të hapur. Ky model kombinon
+                    mjeshtërisht
+                    dizajnin modern, teknologjinë më të fundit dhe performancën e fuqishme për të kënaqur si drejtuesin
+                    ashtu
+                    edhe pasagjerët.
+
+                    <br><b>Dizajni</b><br>
+                    Audi A3 Cabriolet ka një pamje dinamike dhe sportive, me linja të pastra dhe proporcione perfekte.
+                    Kabina e saj e hapur shton ndjesinë e luksit, ndërsa tavanin e butë me palosje automatike mund ta
+                    hapni
+                    ose mbyllni brenda vetëm 18 sekondave, edhe kur makina është në lëvizje deri në 50 km/h.
+
+                    <br><b>Performanca</b><br>
+                    Nën kapak, Audi A3 Cabriolet vjen me një gamë motorësh të fuqishëm dhe efikas, duke përfshirë
+                    opsione
+                    benzine dhe nafte.
+                </p>
             </div>
             <div class="pricing-container">
                 <div class="pricing-header">
                     <h2>Çmimi pa doganë</h2>
-                    <div class="price">150 000€</div>
-                    <button class="btn">Blej</button>
-                    <div class="financing">Financim 2000 €/muaj</div>
+                    <div class="price">390 423 €</div>
+                    <button class="btn" id="payment">Blej</button>
+                    <div class="financing">Financim 8 321 €/muaj</div>
                 </div>
+                <script>
+                    document.getElementById('payment').addEventListener('click', function() {
+                      window.location.href = 'payment.html';
+                    });
+                  </script>
 
                 <div class="services">
                     <h3>Totali i shërbimeve</h3>
@@ -569,7 +574,7 @@
                     </div>
                     <div class="service-item">
                         <span>Pika e dorëzimit Prishtina, Kosovo</span>
-                        <span>1200 €</span>
+                        <span>757 €</span>
                     </div>
                     <div class="service-item">
                         <span>Regjistrimi i veturës <span class="info">(i)</span></span>
@@ -581,7 +586,7 @@
                     </div>
                     <div class="service-item">
                         <span>Dogana <span class="info">(i)</span></span>
-                        <span>45 518 €</span>
+                        <span>40 118 €</span>
                     </div>
                     <div class="service-item">
                         <span>Garancion</span>
@@ -590,16 +595,20 @@
 
                     <div class="total">
                         <span>Totali për pagesë</span>
-                        <span>200 770 €</span>
+                        <span>509 196 €</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <footer>
-        &copy; 2025 Audi. Të gjitha të drejtat e rezervuara.
-    </footer>
+    <div id="Footer"></div>
+    <script>
+        fetch('footer.html')
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById('Footer').innerHTML = data;
+          });
+      </script>
 </body>
 
 </html>
