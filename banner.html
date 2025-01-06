@@ -227,21 +227,13 @@ i{
     </style>
 
 <body>
-    <div id="Footer"></div>
-    <script>
-        fetch('footer.html')
-          .then(response => response.text())
-          .then(data => {
-            document.getElementById('Footer').innerHTML = data;
-          });
-      </script>
     <div id="section-1">
         <nav class="navbar">
             <ul>
                 <li><a href="project.html"><img src="logo.png" class="logo"></a></li>
                 <li class="name">AUTOSPHERE</li>
                 <li><a href="project.html" class="line">Home</a></li>
-                <li><a href="/about.html" class="line">About</a></li>
+                <li><a href="about-us.html" class="line">About Us</a></li>
                 <li><a href="/howitworks.html" class="line">How it works</a></li>
                 <li><a href="/reviews.html" class="line">Reviews</a></li>
                 <li><a href="#" class="favorite trigger-favorites"><i class="fa-regular fa-heart" id="icon-regular"></i>
@@ -277,13 +269,6 @@ i{
     <div id="overlay"
         style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 999;">
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-          const script = document.createElement('script');
-          script.src = 'banner.js';
-          document.body.appendChild(script);
-        });
-      </script>
-      
+    <script src="banner.js"></script>
 </body>
 </html>

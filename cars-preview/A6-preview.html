@@ -343,22 +343,23 @@
         .guarantee-item a:hover {
             text-decoration: underline;
         }
-        #previousPage {
-        padding: 10px 20px;
-        background-color: #f4f4f9;
-        color: green;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        margin: 20px;
-        margin-top: 60px;
-        margin-bottom: -100px;
-    }
 
-    #previousPage:hover {
-        color: #8dde20;
-    }
+        #previousPage {
+            padding: 10px 20px;
+            background-color: #f4f4f9;
+            color: green;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 20px;
+            margin-top: 60px;
+            margin-bottom: -100px;
+        }
+
+        #previousPage:hover {
+            color: #8dde20;
+        }
 
         /* Footer */
         footer {
@@ -392,7 +393,8 @@
                 font-size: 1.3rem;
                 color: solid black;
             }
-            .logos{
+
+            .logos {
                 display: none;
             }
 
@@ -454,6 +456,7 @@
         </div>
     </div>
 
+
     <div class="container">
         <div class="left-content">
             <div class="left-content-up">
@@ -467,7 +470,7 @@
                     <img src="../Audi/A6/normal/a6.jfif" alt="Slide 7" onclick="openSlide(7)">
                     <img src="../Audi/A6/normal/a7.jfif" alt="Slide 8" onclick="openSlide(8)">
                 </div>
-                
+
                 <script>
                     function openSlide(slideNumber) {
                         const baseUrl = "slideshow.html";
@@ -553,15 +556,20 @@
                     <br><br><b>Karakteristikat:</b><br>
                      Teknologji: Apple CarPlay, Android Auto, dhe mundësi për sistemin audio Bang & Olufsen.
                      Siguria: Audi Pre-Sense Plus, Park Assist dhe Adaptiv Cruise Control për siguri më të madhe.
-                 </p> 
+                 </p>
             </div>
             <div class="pricing-container">
                 <div class="pricing-header">
                     <h2>Çmimi pa doganë</h2>
-                    <div class="price">42 990€</div>
+                    <div class="price">43 423 €</div>
                     <button class="btn">Blej</button>
-                    <div class="financing">Financim 450 €/muaj</div>
+                    <div class="financing">Financim 8 321 €/muaj</div>
                 </div>
+                <script>
+                    document.getElementById('payment').addEventListener('click', function() {
+                      window.location.href = 'payment.html';
+                    });
+                  </script>
 
                 <div class="services">
                     <h3>Totali i shërbimeve</h3>
@@ -595,7 +603,6 @@
                         <span>56 460 €</span>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 

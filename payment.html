@@ -8,7 +8,6 @@
     <title>Payments</title>
     <style>
         #payments {
-    background: #58c25fe0;
     font-family: 'Arial', sans-serif;
     background-image: url(payment.webp);
     background-size: cover;
@@ -122,6 +121,14 @@
                   document.body.appendChild(script);
                 });
               </script>
+              <div id="Footer"></div>
+              <script>
+                  fetch('footer.html')
+                    .then(response => response.text())
+                    .then(data => {
+                      document.getElementById('Footer').innerHTML = data;
+                    });
+                </script>
               </body>
         <script>
             document.addEventListener('DOMContentLoaded', () => {
