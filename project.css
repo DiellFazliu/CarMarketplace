@@ -748,3 +748,6 @@ body {
         max-width: 320px; 
     }
 }
+.same:hover {
+    transform: translateY(-5px);
+}
