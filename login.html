@@ -24,6 +24,101 @@
         .active {
             opacity: 0.7;
         }
+        @media (max-width: 480px) {
+    body {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: auto;
+        padding: 0 20px;
+    }
+
+    .background {
+        width: 100%;
+        height: auto;
+        position: static;
+        transform: none;
+        margin: 20px 0;
+    }
+
+    .background .shape:first-child {
+        height: 100px;
+        width: 100px;
+        left: -50px;
+        top: 0;
+    }
+
+    .background .shape:last-child {
+        height: 100px;
+        width: 100px;
+        right: -20px;
+        bottom: 0;
+    }
+
+    form {
+        width: 100%;
+        max-width: 350px;
+        height: auto;
+        top: auto;
+        left: auto;
+        margin: 20px 0;
+        transform: none;
+        padding: 30px 20px;
+    }
+
+    form h3 {
+        font-size: 24px;
+    }
+
+    .login-subtitle {
+        font-size: 14px;
+    }
+
+    input {
+        height: 45px;
+        font-size: 13px;
+    }
+
+    #button {
+        padding: 12px 0;
+        font-size: 16px;
+    }
+
+    .text-section {
+        position: static;
+        transform: none;
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .text-section h1 {
+        font-size: 32px;
+        margin-bottom: 15px;
+    }
+
+    .text-section p {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .logo-wrapper {
+
+        padding: 10px 0;
+        padding-left: 45px;
+    }
+
+    .logo {
+        width: 150px;
+        transform: translateX(-15px);
+    }
+
+    .name {
+        display: none;
+    }
+    .text-section{
+        display: none;
+    }
+}
     </style>
 </head>
 
