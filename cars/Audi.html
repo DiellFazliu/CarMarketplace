@@ -514,27 +514,40 @@
                             $(".filters-custom").removeClass("active");
                         });
 
-                        // Define models for each brand
                         const models = {
                             Mercedes: ["C Class", "E Class", "S Class", "G Class"],
                             Audi: ["A3", "A6", "A7", "A8"],
                             BMW: ["Series 3", "Series 4", "Series 7", "Series 8"],
-                            Porsche: ["Taycan", "991", "992"],
-                            "Rolls Royce": ["Phantom", "Dawn", "Wraith", "Ghost"]
+                            Porsche: ["911", "Taycan"],
+                            RollsRoyce: ["Dawn", "Ghost", "Phantom", "Wraith"],
                         };
-
-                        // Define combinations mapping (brand-model to URL)
+                
                         const combinations = {
-                            "mercedes": "mercedes.html",  // Brand-only page
-                            "audi": "audi.html",  // Brand-only page
-                            "audi-a3": "audi-a3.html",
-                            "bmw": "bmw.html",  // Brand-only page
-                            "bmw-series-1": "bmw-series-1.html",
-                            "porsche": "porsche.html",  // Brand-only page
-                            "porsche-cayman": "porsche-cayman.html",
-                            "rolls-royce": "rolls-royce.html",  // Brand-only page
-                            "rolls-royce-phantom": "rolls-royce-phantom.html"
+                            "mercedes": "Mercedes.html",
+                            "mercedes-c-class": "mercedesC.html",
+                            "mercedes-e-class": "mercedesE.html",
+                            "mercedes-s-class": "mercedesS.html",
+                            "mercedes-g-class": "mercedesG.html",
+                            "bmw": "BMW.html",
+                            "bmw-series-3": "bmwm3.html",
+                            "bmw-series-4": "bmwm4.html",
+                            "bmw-series-7": "bmw7.html",
+                            "bmw-series-8": "bmw8.html",
+                            "audi": "Audi.html",
+                            "audi-a3": "audia3.html",
+                            "audi-a6": "audia6.html",
+                            "audi-a7": "audia7.html",
+                            "audi-a8": "audia8.html",
+                            "porsche": "Porsche.html",
+                            "porsche-911": "porsche911.html",
+                            "porsche-taycan": "porschetaycan.html",
+                            "rollsroyce": "RollsRoyce.html",
+                            "rollsroyce-dawn": "rollsroycedawn.html",
+                            "rollsroyce-ghost": "rollsroyceghost.html",
+                            "rollsroyce-phantom": "rollsroycephantom.html",
+                            "rollsroyce-wraith": "rollsroycewraith.html"
                         };
+        
 
                         // Update selected brand
                         $("#brandMenu-custom a").click(function (e) {
@@ -619,7 +632,7 @@
     </div>
     </div>
     <div class="listings-custom" style="flex: 1 1 60%;">
-        <a href="../cars-preview/A3-preview.html" class="card-link">
+        <a href="A3-preview.html" class="card-link">
             <div class="card-custom">
                 <img src="../Audi/A3/normal/a.jfif" alt="Audi A3">
                 <div class="details-custom">
@@ -638,7 +651,7 @@
             </div>
         </a>
         
-        <a href="../cars-preview/A3Coupe-preview.html" class="card-link">
+        <a href="A3Coupe-preview.html" class="card-link">
             <div class="card-custom">
                 <img src="../Audi/A3/kabriolet/a.jfif" alt="Audi A3 Coupe">
                 <div class="details-custom">
@@ -657,7 +670,7 @@
             </div>
         </a>
         
-        <a href="../cars-preview/A6-preview.html" class="card-link">
+        <a href="A6-preview.html" class="card-link">
             <div class="card-custom">
                 <img src="../Audi/A6/normal/a.jfif" alt="Audi A6">
                 <div class="details-custom">
@@ -676,7 +689,7 @@
             </div>
         </a>
         
-        <a href="../cars-preview/RS6-preview.html" class="card-link">
+        <a href="RS6-preview.html" class="card-link">
             <div class="card-custom">
                 <img src="../Audi/A6/rs6/a.jfif" alt="Audi RS6">
                 <div class="details-custom">
@@ -695,7 +708,7 @@
             </div>
         </a>
         
-        <a href="../cars-preview/A7-preview.html" class="card-link">
+        <a href="A7-preview.html" class="card-link">
             <div class="card-custom">
                 <img src="../Audi/A7/normal/a.jfif" alt="Audi A7">
                 <div class="details-custom">
@@ -714,7 +727,7 @@
             </div>
         </a>
         
-        <a href="../cars-preview/rs7-preview.html" class="card-link">
+        <a href="rs7-preview.html" class="card-link">
             <div class="card-custom">
                 <img src="../Audi/A7/rs7/a.jfif" alt="Audi RS7">
                 <div class="details-custom">
@@ -733,7 +746,7 @@
             </div>
         </a>
         
-        <a href="../cars-preview/A8-preview.html" class="card-link">
+        <a href="A8-preview.html" class="card-link">
             <div class="card-custom">
                 <img src="../Audi/A8/normal/a.jfif" alt="Audi A8">
                 <div class="details-custom">
@@ -751,7 +764,7 @@
                 </div>
             </div>
         </a>
-        <a href="../cars-preview/S8-preview.html" class="card-link">
+        <a href="S8-preview.html" class="card-link">
             <div class="card-custom">
                 <img src="../Audi/A8/s8/a.jfif" alt="Audi S8">
                 <div class="details-custom">
