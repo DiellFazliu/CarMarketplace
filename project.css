@@ -439,7 +439,6 @@ i{
 .footer-section h2 span {
     color: #fff;
 }
-
 .footer-section p {
     line-height: 1.6;
     margin: 0 0 10px;
@@ -481,4 +480,176 @@ i{
     padding-top: 10px;
     font-size: 12px;
 }
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
 
+    #section-1 {
+        display: none;
+        height: 40px;
+        font-size: 12px;
+    }
+
+    #section-2 {
+        height: 60vh;
+        background-position: center;
+        background-size: cover;
+    }
+
+    #section-3 {
+        top: 70%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        height: auto;
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    .right {
+        margin-bottom: 40px;
+        margin-right: 0;
+    }
+
+    .horizontale {
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+        width: 100%;
+    }
+    .horizontale > div {
+        margin: 5px 0;
+        width: 100%;
+        height: 40px;
+    }
+
+    .extra-part {
+        margin: 20px auto;
+        width: 100%;
+        height: auto;
+        padding: 10px;
+    }
+
+    #section-4 {
+        padding: 20px;
+    }
+
+    .Menu {
+        padding: 5px;
+    }
+
+    .btnMenu {
+        padding: 5px;
+        font-size: 14px;
+    }
+
+    .navbar {
+        padding: 5px 10px;
+        height: auto;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .navbar li {
+        margin: 5px 0;
+    }
+
+    .navbar .dropdown-content {
+        right: auto;
+        left: 0;
+        width: 100%;
+    }
+
+    #sllogani {
+        font-size: 1rem;
+        padding: 0;
+        padding-bottom: 20px;
+    }
+
+    #slg0 {
+        font-size: 3rem;
+    }
+
+    #slg {
+        font-size: 1.5rem;
+    }
+
+    #cars-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .car-card img {
+        max-height: 80px;
+    }
+
+    .footer {
+        padding: 20px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        margin: 0;
+        text-align: center;
+    }
+
+    .favorite {
+        padding-left: 0;
+        font-size: 20px;
+    }
+
+    .extra-part:hover,
+    .favorite-btn:hover,
+    #button:hover {
+        transform: none; 
+    }
+    .login-icon {
+        height: 24px;
+    }
+    .extra-part {
+        width: 215px !important; 
+        margin: 10px auto; 
+        padding: 5px; 
+        font-size: 12px; 
+    }
+    #section-3 {
+        background: transparent; 
+        margin-top: 50px; 
+        padding-top: 20px; 
+    }
+    #section-3 .horizontale {
+        position: relative; 
+    }
+    
+    #section-3 .Menu {
+        position: absolute;  
+        top: 40px;           
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        background-color: white;  
+        display: none;
+        width: 215px; 
+        transform: translateY(10px); 
+    }
+    
+    #extrapart {
+        position: relative;
+        z-index: 1; 
+    }
+    #section-3 .right {
+        position: relative;  
+    }
+    
+    #extrapart {
+        right: 20px;  
+        transform: translateX(60%); 
+    }
+}

@@ -69,64 +69,73 @@
                     </div>
                 </div>
                 <script>
-                    $(document).ready(function () {
+                    document.addEventListener("DOMContentLoaded", function () {
                         let selectedBrand = "";
                         let selectedModel = "";
-
+                
                         const models = {
                             Mercedes: ["A Class", "B Class", "C Class", "E Class", "S Class", "GLA", "GLB", "GLE", "GLS", "Maybach"],
                             Audi: ["A1", "A3", "A4", "A5", "A6", "A7", "A8L", "Q2", "Q3", "Q5", "Q7", "Q8", "E-tron"],
                             BMW: ["Series 1", "Series 3", "Series 4", "Series 5", "X1", "X2", "X3", "X4", "X5", "X6", "X7", "I7"]
                         };
-
+                
                         const combinations = {
                             "mercedes": "mercedes.html",
                             "mercedes-a-class": "mercedesA.html",
                         };
-
-                        $("#brandMenu a").click(function (e) {
-                            e.preventDefault();
-                            selectedBrand = $(this).data("brand");
-                            $("#brandButton").text(selectedBrand);
-                            $("#brandMenu").slideUp(500);
-
-                            const modelList = models[selectedBrand] || [];
-                            const modelItems = modelList.map(model => `<li><a href="#">${model}</a></li>`).join("");
-                            $("#modelMenu").html(modelItems);
-                            $("#modelButton").text("Model");
+        
+                        document.querySelectorAll("#brandMenu a").forEach(item => {
+                            item.addEventListener("click", function (e) {
+                                e.preventDefault();
+                                selectedBrand = this.dataset.brand;
+                                document.getElementById("brandButton").textContent = selectedBrand;
+                
+                                const modelList = models[selectedBrand] || [];
+                                const modelMenu = document.getElementById("modelMenu");
+                                modelMenu.innerHTML = modelList.map(model => `<li><a href="#" data-model="${model}">${model}</a></li>`).join("");
+                                document.getElementById("modelButton").textContent = "Model";
+                                modelMenu.style.display = "none";
+                            });
                         });
 
-                        $("#modelMenu").on("click", "a", function (e) {
-                            e.preventDefault();
-                            selectedModel = $(this).text();
-                            $("#modelButton").text(selectedModel);
-                            $("#modelMenu").slideUp(500);
-                        });
-
-                        $("#extrapart").click(function () {
-                            if (selectedBrand) {
-                                let key = selectedBrand.toLowerCase().replace(/\s+/g, '-');
-                                if (selectedModel) key += '-' + selectedModel.toLowerCase().replace(/\s+/g, '-');
-
-                                if (combinations[key]) {
-                                    window.location.href = combinations[key];
-                                } else {
-                                    alert("No page found for this combination. Please select valid options.");
-                                }
-                            } else {
-                                alert("Please select a brand.");
+                        document.getElementById("modelMenu").addEventListener("click", function (e) {
+                            if (e.target.tagName === "A") {
+                                e.preventDefault();
+                                selectedModel = e.target.dataset.model;
+                                document.getElementById("modelButton").textContent = selectedModel;
                             }
                         });
 
-                        $(".btnMenu").click(function () {
-                            const menuId = $(this).attr("id").replace("Button", "Menu");
-                            $(".Menu").not(`#${menuId}`).slideUp(500);
-                            $(`#${menuId}`).stop(true, true).slideToggle(500);
+                        document.getElementById("extrapart").addEventListener("click", function () {
+                            let key = "";
+                
+                            if (selectedBrand) {
+                                key = selectedBrand.toLowerCase().replace(/\s+/g, '-');
+                                if (selectedModel) {
+                                    key += '-' + selectedModel.toLowerCase().replace(/\s+/g, '-');
+                                }
+                            }
+                
+                            if (!selectedBrand && !selectedModel) {
+                                window.location.href = "cars.html";
+                            } else if (combinations[key]) {
+                                window.location.href = combinations[key];
+                            } else {
+                                alert("No page found for this combination. Please select valid options.");
+                            }
+                        });
+                
+                        document.querySelectorAll(".btnMenu").forEach(button => {
+                            button.addEventListener("click", function () {
+                                const menuId = this.id.replace("Button", "Menu");
+                                const menu = document.getElementById(menuId);
+                                const isVisible = menu.style.display === "block";
+                                document.querySelectorAll(".Menu").forEach(menu => (menu.style.display = "none"));
+                                menu.style.display = isVisible ? "none" : "block";
+                            });
                         });
                     });
-
                 </script>
-
                 <input id="extrapart" class="extra-part" type="submit" value="Search"
                     style="height: 32px; width: 170px; border:rgba(141,224,32,1); background: #8de020 ;color:white">
             </div>
@@ -150,43 +159,14 @@
         <div id="cars-container" style="display: flex; flex-wrap: wrap; gap: 20px;">
         </div>
     </div>
-
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-section about">
-                <h2>About <span>Autosphere</span></h2>
-                <p>
-                    Autosphere is your one-stop platform for exploring the best cars from renowned brands. 
-                    Discover your dream car today!
-                </p>
-            </div>
-            <div class="footer-section links">
-                <h2>Quick Links</h2>
-                <ul>
-                    <li><a href="project.html">Home</a></li>
-                    <li><a href="about-us.html">About</a></li>
-                    <li><a href="howitworks.html">How It Works</a></li>
-                    <li><a href="reviews.html">Reviews</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section contact">
-                <h2>Contact Us</h2>
-                <p><i class="fas fa-envelope"></i> support@autosphere.com</p>
-                <p><i class="fas fa-phone"></i> +383 45 290 001</p>
-                <div class="socials">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            &copy; 2025 Autosphere | All Rights Reserved
-        </div>
-    </footer>
-    
+    <div id="Footer"></div>
+    <script>
+        fetch('footer.html')
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById('Footer').innerHTML = data;
+          });
+      </script>
 
     <script>
         $(document).ready(function () {
@@ -277,6 +257,5 @@
             });
         });
     </script>
-    
 </body>
 </html>

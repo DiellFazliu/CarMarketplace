@@ -68,5 +68,13 @@
           <button type="submit" class="submit-btn">Submit Review</button>
         </form>
     </section>
+    <div id="Footer"></div>
+    <script>
+        fetch('footer.html')
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById('Footer').innerHTML = data;
+          });
+      </script>
 </body>
 </html>

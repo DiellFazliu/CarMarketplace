@@ -590,9 +590,14 @@
             </div>
         </div>
     </div>
-    <footer>
-        &copy; 2025 Audi. Të gjitha të drejtat e rezervuara.
-    </footer>
+    <div id="Footer"></div>
+    <script>
+        fetch('footer.html')
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById('Footer').innerHTML = data;
+          });
+      </script>
 </body>
 
 </html>
