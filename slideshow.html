@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -89,10 +90,12 @@
             .img {
                 max-height: 60vh;
             }
+
             .btn {
                 font-size: 14px;
                 padding: 8px 16px;
             }
+
             .close-btn {
                 font-size: 16px;
                 padding: 5px 8px;
@@ -103,10 +106,12 @@
             .img {
                 max-height: 50vh;
             }
+
             .btn {
                 font-size: 12px;
                 padding: 6px 12px;
             }
+
             .close-btn {
                 font-size: 14px;
                 padding: 4px 6px;
@@ -114,6 +119,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="slideshow-container">
         <button class="close-btn" onclick="goBack()">X</button>
@@ -138,29 +144,49 @@
         const slides = document.querySelectorAll('.img');
         const counter = document.getElementById('counter');
 
+        // Funksioni për të shfaqur një slajd të caktuar dhe për të ndryshuar URL-n
         function showSlide(index) {
             slides.forEach((slide, i) => {
                 slide.classList.toggle('active', i === index);
             });
 
-            // Update the counter
+            // Përditëso URL-n me parametrin e ri të slide-it
+            const newUrl = `${window.location.pathname}?slide=${index + 1}`;
+            history.replaceState(null, '', newUrl);
+
+            // Përditëso numëruesin
             counter.textContent = `${index + 1} / ${slides.length}`;
         }
 
+        // Funksioni për të kaluar te slajdi i radhës
         function nextSlide() {
             currentSlide = (currentSlide + 1) % slides.length;
             showSlide(currentSlide);
         }
 
+        // Funksioni për të kaluar te slajdi i mëparshëm
         function prevSlide() {
             currentSlide = (currentSlide - 1 + slides.length) % slides.length;
             showSlide(currentSlide);
         }
 
+        // Funksioni për t'u kthyer mbrapa
         function goBack() {
             alert('Going back to the previous page!');
             window.history.back();
         }
+
+        // Merr parametrin "slide" nga URL-ja dhe shfaq slajdin e duhur
+        const urlParams = new URLSearchParams(window.location.search);
+        const slideNumber = parseInt(urlParams.get('slide'), 10);
+
+        if (slideNumber && slideNumber > 0 && slideNumber <= slides.length) {
+            currentSlide = slideNumber - 1; // Përshtat për indeksin zero-bazë
+        }
+
+        // Shfaq slajdin fillestar
+        showSlide(currentSlide);
     </script>
 </body>
+
 </html>

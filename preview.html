@@ -14,32 +14,15 @@
 
         body {
             font-family: 'Roboto', Arial, sans-serif;
-            line-height: 1.6;
             color: #333;
             background-color: #f4f4f9;
-        }
-
-        /* Header */
-        header {
-            background-color: #333;
-            color: white;
-            padding: 15px 20px;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        header h1 {
-            font-size: 24px;
-            font-weight: bold;
         }
 
         /* Title */
         #titulli {
             font-size: 2.5rem;
             text-align: center;
-            margin: 60px 100px 10px;
+            margin: 30px 100px 10px;
             color: #000;
         }
 
@@ -360,6 +343,22 @@
         .guarantee-item a:hover {
             text-decoration: underline;
         }
+        #previousPage {
+        padding: 10px 20px;
+        background-color: #f4f4f9;
+        color: green;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 20px;
+        margin-top: 60px;
+        margin-bottom: -100px;
+    }
+
+    #previousPage:hover {
+        color: #8dde20;
+    }
 
         /* Footer */
         footer {
@@ -403,15 +402,33 @@
 </head>
 
 <body>
-    <div id="header"></div>
+    <div id="header" style="position: absolute; top: auto; left: auto;width: 100%; padding: 10px 0;"></div>
     <script>
-        fetch('banner.html')
-            .then(response => response.text())
+        fetch('./banner.html') // Kontrolloni rrugën
+            .then(response => {
+                if (!response.ok) throw new Error("Failed to fetch banner.html");
+                return response.text();
+            })
             .then(data => {
                 document.getElementById('header').innerHTML = data;
-            });
+            })
+            .catch(error => console.error(error));
     </script>
-    <script src="banner.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const script = document.createElement('script');
+            script.src = 'banner.js';
+            document.body.appendChild(script);
+        });
+    </script>
+    <div>
+        <button id="previousPage">Previous Page</button>
+    </div>
+    <script>
+        document.getElementById('previousPage').addEventListener('click', function () {
+            window.history.back();
+        });
+    </script>
 
     <p id="titulli">Audi A3 Cabriolet</p>
     <div class="logos">
@@ -441,11 +458,19 @@
         <div class="left-content">
             <div class="left-content-up">
                 <div class="slideshow">
-                    <img src="Audi/A3/kabriolet/a.jfif" alt="Slide 1" class="active">
-                    <img src="Audi/A3/kabriolet/a1.jfif" alt="Slide 2">
-                    <img src="Audi/A3/kabriolet/a2.jfif" alt="Slide 3">
-                    <img src="Audi/A3/kabriolet/a3.jfif" alt="Slide 4">
+                    <img src="Audi/A3/normal/a.jfif" alt="Slide 1" class="active" onclick="openSlide(1)">
+                    <img src="Audi/A3/normal/a1.jfif" alt="Slide 2" onclick="openSlide(2)">
+                    <img src="Audi/A3/normal/a2.jfif" alt="Slide 3" onclick="openSlide(3)">
+                    <img src="Audi/A3/normal/a3.jfif" alt="Slide 4" onclick="openSlide(4)">
                 </div>
+                
+                <script>
+                    function openSlide(slideNumber) {
+                        const baseUrl = "slideshow.html";
+                        const fullUrl = `${baseUrl}?slide=${slideNumber}`;
+                        window.location.href = fullUrl;
+                    }
+                </script>
 
                 <div class="controls">
                     <button id="prev">Previous</button>
