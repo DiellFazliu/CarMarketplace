@@ -4,10 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="smalldevice.css">
-    <link rel="stylesheet" href="project.css">
     <title>Preview</title>
     <style>
         * {
@@ -18,32 +14,15 @@
 
         body {
             font-family: 'Roboto', Arial, sans-serif;
-            line-height: 1.6;
             color: #333;
             background-color: #f4f4f9;
-        }
-
-        /* Header */
-        header {
-            background-color: #333;
-            color: white;
-            padding: 15px 20px;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        header h1 {
-            font-size: 24px;
-            font-weight: bold;
         }
 
         /* Title */
         #titulli {
             font-size: 2.5rem;
             text-align: center;
-            margin: 60px 100px 10px;
+            margin: 30px 100px 10px;
             color: #000;
         }
 
@@ -312,7 +291,7 @@
             border-radius: 10px;
             padding: 20px;
             width: 100%;
-            margin-top: -50px;
+            margin-top: 20px;
             max-width: 1200px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
@@ -365,6 +344,23 @@
             text-decoration: underline;
         }
 
+        #previousPage {
+            padding: 10px 20px;
+            background-color: #f4f4f9;
+            color: green;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 20px;
+            margin-top: 60px;
+            margin-bottom: -100px;
+        }
+
+        #previousPage:hover {
+            color: #8dde20;
+        }
+
         /* Footer */
         footer {
             background-color: #8dde20;
@@ -397,7 +393,8 @@
                 font-size: 1.3rem;
                 color: solid black;
             }
-            .logos{
+
+            .logos {
                 display: none;
             }
 
@@ -407,114 +404,80 @@
 </head>
 
 <body>
-    
-<div id="menu-icon">
-    <i class="fa-solid fa-bars" style="color: #8de020;"></i>
-</div>
-<div id="overlay1">
-    <div id="menu">
-            <ul style="text-align: center;">
-                <li><a href="project.html"><img src="logo.png" class="logo"></a></li>
-                <li class="name">AUTOSPHERE</li>
-                <li><a href="project.html" class="line">Home</a></li>
-                <li><a href="/cars.html" class="line">Our Cars</a></li>
-                <li><a href="/about-us.html" class="line">About Us</a></li>
-                <li><a href="/howitworks.html" class="line">How it works</a></li>
-                <li><a href="/reviews.html" class="line">Reviews</a></li>
-                <li class="dropdown">
-                    <div>
-                            <li class="login-text trigger-favorites"><a href="#"><i
-                                        class="fa-regular fa-heart"></i>Favorite cars</a></li>
-                            <input id="button" type="submit" value="Login" onclick="window.location.href='login.html';">
-                            <li>
-                                <div class="sign-up">
-                                    <a>Don't have an account?</a> <a href="register.html" class="sign" style="color: rgb(141, 224, 32);text-decoration: none;
-                            font-weight: 500;"> <br> Sign up</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-    </div>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-    const menuIcon = document.getElementById("menu-icon");
-    const menu = document.getElementById("menu");
-    const overlay = document.getElementById("overlay1");
-
-    function toggleMenu() {
-        menu.classList.toggle("active");
-        overlay.classList.toggle("active");
-    }
-
-    menuIcon.addEventListener("click", toggleMenu);
-    overlay.addEventListener("click", toggleMenu);
-});
-</script>
-<div id="favorites-modal"
-style="display: none; position: fixed; top: 20%; left: 50%; transform: translate(-50%, -20%); width: 80%; background: white; border: 1px solid #ddd; padding: 20px; border-radius: 5px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); z-index: 1000;">
-<h2>Favorites</h2>
-<div id="favorites-container" style="display: flex; flex-wrap: wrap; gap: 20px;">
-</div>
-<button id="close-favorites"
-    style="background: #8de020; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-top: 20px;">Close</button>
-</div>
-<div id="overlay"
-style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 999;">
-</div>
-<script src="favorite1.js"></script>
-</div>
-    <div id="Banner">
+    <div id="header" style="position: absolute; top: auto; left: auto;width: 100%; padding: 10px 0;"></div>
     <script>
-        fetch('banner.html')
-          .then(response => response.text())
-          .then(data => {
-            document.getElementById('Banner').innerHTML = data;
-          });
-      </script>
-      <script>
+        fetch('./../banner.html') // Kontrolloni rrugën
+            .then(response => {
+                if (!response.ok) throw new Error("Failed to fetch banner.html");
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            })
+            .catch(error => console.error(error));
+    </script>
+    <script>
         document.addEventListener('DOMContentLoaded', function () {
-          const script = document.createElement('script');
-          script.src = 'banner.js';
-          document.body.appendChild(script);
+            const script = document.createElement('script');
+            script.src = 'banner.js';
+            document.body.appendChild(script);
         });
-      </script>
-      </div>
+    </script>
+    <div>
+        <button id="previousPage">Previous Page</button>
+    </div>
+    <script>
+        document.getElementById('previousPage').addEventListener('click', function () {
+            window.history.back();
+        });
+    </script>
 
-    <p id="titulli">Audi A3 Cabriolet</p>
+    <p id="titulli">Audi A6 3.0 TDI</p>
     <div class="logos">
         <div>
-            <img class="logot" src="car-logos/engine.png">
-            <p>2.0 Diesel(180Ps)</p>
+            <img class="logot" src="../car-logos/engine.png">
+            <p>3.0 (272Hp)</p>
         </div>
         <div>
-            <img class="logot" src="car-logos/transmission.png">
+            <img class="logot" src="../car-logos/transmission.png">
             <p>Automatic</p>
         </div>
         <div>
-            <img class="logot" src="car-logos/fuel.png">
+            <img class="logot" src="../car-logos/fuel.png">
             <p>Diesel</p>
         </div>
         <div>
-            <img class="logot" src="car-logos/road.png">
-            <p>100000km</p>
+            <img class="logot" src="../car-logos/road.png">
+            <p>45.000km</p>
         </div>
         <div>
-            <img class="logot" src="car-logos/calendar.png">
-            <p>08/2021</p>
+            <img class="logot" src="../car-logos/calendar.png">
+            <p>05/2020</p>
         </div>
     </div>
+
 
     <div class="container">
         <div class="left-content">
             <div class="left-content-up">
                 <div class="slideshow">
-                    <img src="Audi/A3/kabriolet/a.jfif" alt="Slide 1" class="active">
-                    <img src="Audi/A3/kabriolet/a1.jfif" alt="Slide 2">
-                    <img src="Audi/A3/kabriolet/a2.jfif" alt="Slide 3">
-                    <img src="Audi/A3/kabriolet/a3.jfif" alt="Slide 4">
+                    <img src="../Audi/A6/normal/a.jfif" alt="Slide 1" class="active" onclick="openSlide(1)">
+                    <img src="../Audi/A6/normal/a1.jfif" alt="Slide 2" onclick="openSlide(2)">
+                    <img src="../Audi/A6/normal/a2.jfif" alt="Slide 3" onclick="openSlide(3)">
+                    <img src="../Audi/A6/normal/a3.jfif" alt="Slide 4" onclick="openSlide(4)">
+                    <img src="../Audi/A6/normal/a4.jfif" alt="Slide 5" onclick="openSlide(5)">
+                    <img src="../Audi/A6/normal/a5.jfif" alt="Slide 6" onclick="openSlide(6)">
+                    <img src="../Audi/A6/normal/a6.jfif" alt="Slide 7" onclick="openSlide(7)">
+                    <img src="../Audi/A6/normal/a7.jfif" alt="Slide 8" onclick="openSlide(8)">
                 </div>
+
+                <script>
+                    function openSlide(slideNumber) {
+                        const baseUrl = "slideshow.html";
+                        const fullUrl = `${baseUrl}?slide=${slideNumber}`;
+                        window.location.href = fullUrl;
+                    }
+                </script>
 
                 <div class="controls">
                     <button id="prev">Previous</button>
@@ -551,28 +514,28 @@ style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100
             <div class="left-content-down">
                 <div class="right">
                     <ul>
-                        <li><strong>Motor:</strong> <span>6.6L V12</span></li>
-                        <li><strong>Fuqia:</strong> <span>420 kW</span></li>
+                        <li><strong>Motor:</strong> <span>2.5 V5</span></li>
+                        <li><strong>Fuqia:</strong> <span>320 Hp</span></li>
                         <li><strong>Transmisioni:</strong> <span>Automatik</span></li>
                         <li><strong>Karburanti:</strong> <span>Benzinë</span></li>
-                        <li><strong>Viti:</strong> <span>2021</span></li>
-                        <li><strong>Kilometrazhi:</strong> <span>30,000 km</span></li>
+                        <li><strong>Viti:</strong> <span>2024</span></li>
+                        <li><strong>Kilometrazhi:</strong> <span>00 km</span></li>
                     </ul>
                 </div>
             </div>
             <div class="guarantee-section">
                 <div class="guarantee-item">
-                    <img src="car-logos/shield.png" alt="Icon">
+                    <img src="../car-logos/shield.png" alt="Icon">
                     <h3>Kthim të parave</h3>
                     <p>Nëse nuk ju pëlqen vetura, kthejeni brenda 14 ditëve.</p>
                 </div>
                 <div class="guarantee-item">
-                    <img src="car-logos/shield.png" alt="Icon">
+                    <img src="../car-logos/shield.png" alt="Icon">
                     <h3>Blerje e sigurt</h3>
                     <p>Ne garantojmë gjendjen teknike të çdo veture.</p>
                 </div>
                 <div class="guarantee-item">
-                    <img src="car-logos/shield.png" alt="Icon">
+                    <img src="../car-logos/shield.png" alt="Icon">
                     <h3>6 muaj garancion</h3>
                     <p>Ofrojmë çdo veturë me garancion.</p>
                     <a href="#">Më shumë rreth garancive &rarr;</a>
@@ -581,33 +544,25 @@ style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100
         </div>
         <div class="right-content">
             <div class="right-content-up">
-                <p><b>Audi A3 Cabriolet: Eleganca dhe Performanca në Qiell të Hapur</b><br><br>
+                <p><b>Audi A6 3.0 TDI</b> është një sedan luksoz i mesëm që ofron performancë të jashtëzakonshme dhe dizajn të sofistikuar. Ja një përshkrim i shkurtër:
 
-                    Audi A3 Cabriolet është një nga makinat më tërheqëse dhe elegante të klasës kompakte luksoze, e
-                    krijuar
-                    për të ofruar një eksperiencë të paharrueshme drejtimi nën qiell të hapur. Ky model kombinon
-                    mjeshtërisht
-                    dizajnin modern, teknologjinë më të fundit dhe performancën e fuqishme për të kënaqur si drejtuesin
-                    ashtu
-                    edhe pasagjerët.
-
-                    <br><b>Dizajni</b><br>
-                    Audi A3 Cabriolet ka një pamje dinamike dhe sportive, me linja të pastra dhe proporcione perfekte.
-                    Kabina e saj e hapur shton ndjesinë e luksit, ndërsa tavanin e butë me palosje automatike mund ta
-                    hapni
-                    ose mbyllni brenda vetëm 18 sekondave, edhe kur makina është në lëvizje deri në 50 km/h.
-
-                    <br><b>Performanca</b><br>
-                    Nën kapak, Audi A3 Cabriolet vjen me një gamë motorësh të fuqishëm dhe efikas, duke përfshirë
-                    opsione
-                    benzine dhe nafte.
-                </p>
+                    <br><br><b>Performanca:</b><br>
+                     Motori: 3.0L TDI me 272 hp dhe mundësi për versionin V6 me 313 hp. Modeli quattro ofron kapacitet të shkëlqyer në terrene të ndryshme.
+                     Transmetimi: Automatik 8-shpejtësi Tiptronic, me mundësi për all-wheel drive (Quattro).
+                     Shpejtësia: Arrin 0-100 km/h në 5.5 sekonda.
+                    <br><br><b>Dizajni:</b><br>
+                     Pamja e jashtme: Grilë frontale single-frame, dritat LED Matrix, dhe linja elegante që japin një pamje moderne dhe dinamike.
+                     Pamja e brendshme: Materiale të larta cilësie, me një ekran MMI Touch dhe opsion për Virtual Cockpit.
+                    <br><br><b>Karakteristikat:</b><br>
+                     Teknologji: Apple CarPlay, Android Auto, dhe mundësi për sistemin audio Bang & Olufsen.
+                     Siguria: Audi Pre-Sense Plus, Park Assist dhe Adaptiv Cruise Control për siguri më të madhe.
+                 </p>
             </div>
             <div class="pricing-container">
                 <div class="pricing-header">
                     <h2>Çmimi pa doganë</h2>
-                    <div class="price">390 423 €</div>
-                    <button class="btn" id="payment">Blej</button>
+                    <div class="price">43 423 €</div>
+                    <button class="btn">Blej</button>
                     <div class="financing">Financim 8 321 €/muaj</div>
                 </div>
                 <script>
@@ -624,7 +579,7 @@ style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100
                     </div>
                     <div class="service-item">
                         <span>Pika e dorëzimit Prishtina, Kosovo</span>
-                        <span>757 €</span>
+                        <span>800 €</span>
                     </div>
                     <div class="service-item">
                         <span>Regjistrimi i veturës <span class="info">(i)</span></span>
@@ -636,7 +591,7 @@ style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100
                     </div>
                     <div class="service-item">
                         <span>Dogana <span class="info">(i)</span></span>
-                        <span>40 118 €</span>
+                        <span>12 418 €</span>
                     </div>
                     <div class="service-item">
                         <span>Garancion</span>
@@ -645,20 +600,15 @@ style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100
 
                     <div class="total">
                         <span>Totali për pagesë</span>
-                        <span>509 196 €</span>
+                        <span>56 460 €</span>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
-    <div id="Footer"></div>
-    <script>
-        fetch('footer.html')
-          .then(response => response.text())
-          .then(data => {
-            document.getElementById('Footer').innerHTML = data;
-          });
-      </script>
+
+    <footer>
+        &copy; 2025 Audi. Të gjitha të drejtat e rezervuara.
+    </footer>
 </body>
 
 </html>
