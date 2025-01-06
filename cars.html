@@ -29,8 +29,6 @@
 
     #container-custom {
         display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
         justify-content: space-between;
         margin: 20px auto;
         max-width: 1200px;
@@ -38,30 +36,32 @@
     }
 
     .filters-custom {
-        flex: 1 1 30%;
+        width: 30%;
+        /* Adjust width to 35% */
         min-width: 250px;
         background-color: white;
         margin-left: 10px;
         border-radius: 10px;
         padding: 10px;
         position: fixed;
-        top: 80px;
+        top: 90px;
         left: 0;
         max-height: fit-content;
         z-index: 1000;
         overflow-y: auto;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         height: 100vh;
-        /* Full viewport height */
         display: flex;
         flex-direction: column;
         padding: 10px;
+        margin-top: 10px;
     }
 
     .listings-custom {
-        flex: 1 1 65%;
+        margin-left: 35%;
+        /* Ensure this takes up the remaining space */
+        width: 65%;
+        /* Adjust width to 65% */
         min-width: 500px;
-        margin-left: 30%;
     }
 
     .filters-custom h3 {
@@ -157,7 +157,6 @@
         padding: 10px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         margin-top: 20px;
-        margin-right: 10px;
     }
 
     .guarantee-item {
@@ -267,24 +266,77 @@
     .card-custom .btn-save-custom:hover {
         background-color: #218838;
     }
-    .filter-btn{
+
+    .filter-btn {
         background-color: white;
         color: #28a745;
         border: none;
         border-radius: 10px;
         text-align: center;
-        
+        margin-top: 80px;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: fit-content;
+        margin-bottom: -60px;
+
     }
-    @media  (max-width: 1920px){
-        .filter-btn{
+
+    .close-btn-test {
+        background-color: white;
+        /* Keep the white background */
+        color: black;
+        /* Text color */
+        border: none;
+        border-radius: 50%;
+        /* Circular button */
+        width: 40px;
+        /* New width */
+        height: 40px;
+        /* New height */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 20px;
+        /* Adjust distance from the top */
+        right: 20px;
+        /* Adjust distance from the right */
+        cursor: pointer;
+        font-size: 18px;
+        /* Larger font size */
+        font-weight: bold;
+
+    }
+
+    .close-btn-test:hover {
+        background-color: grey;
+        /* Optional hover effect */
+    }
+
+
+    @media (min-width: 1025px) {
+        .filter-btn {
+            display: none;
+        }
+
+        .close-btn-test {
             display: none;
         }
     }
 
     @media (max-width: 1024px) {
-        .filter-btn{
+        .filter-btn {
             display: block;
         }
+
+        .close-btn-test {
+            display: block;
+        }
+
         /* Move the guarantee section to the bottom of the page on smaller devices */
         .guarantee-section {
             position: relative;
@@ -295,16 +347,12 @@
         /* For smaller screens, show the filters as a popup */
         .filters-custom {
             position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(141, 224, 32, 0.8);
             color: white;
             display: none;
-            /* Hidden by default */
-            z-index: 1001;
             padding: 15px;
+            height: fit-content;
         }
 
         .filters-custom.active {
@@ -357,7 +405,7 @@
 
     @media (max-width: 480px) {
         .filters-custom {
-            width: 100%;
+            width: 110%;
             padding: 15px;
             top: 0;
         }
@@ -365,14 +413,12 @@
         .listings-custom {
             margin-left: 0;
             width: 100%;
+            height: auto;
         }
 
         .extra-part-custom {
             width: 100%;
         }
-    }
-    .filter-btn{
-        margin-top: 100px;
     }
 </style>
 
@@ -394,34 +440,34 @@
     </script>
     <button class="filter-btn">Show Filters</button>
     <div id="container-custom">
-        <div class="filters-custom">
+        <div class="filters-custom" style="flex: 1 1 35%;">
+            <button class="close-btn-test" style="width: 30px; height: 40px;border-radius: 10px;">&times;</button>
             <div class="still">
                 <h3>Filter Options</h3>
                 <div class="horizontale-custom">
                     <div>
                         <button class="btnMenu-custom" id="brandButton-custom">Brand
-                            &nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &#9660;</button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#9660;</button>
                         <ul style="list-style: none; padding: 0; margin: 0; display: none; max-height: 100px; overflow-y: scroll; border: 1px solid #ddd;"
-                            class="Menu-custom" id="brandMenu-custom"> <!-- corrected id attribute -->
+                            class="Menu-custom" id="brandMenu-custom">
                             <li><a href="#" data-brand="Mercedes">Mercedes Benz</a></li>
                             <li><a href="#" data-brand="Audi">Audi</a></li>
                             <li><a href="#" data-brand="BMW">BMW</a></li>
-                            <li><a href="#" data-brand="Porche">Porche</a></li>
+                            <li><a href="#" data-brand="Porsche">Porsche</a></li>
                             <li><a href="#" data-brand="Rolls Royce">Rolls Royce</a></li>
                         </ul>
-
                     </div>
                     <div>
                         <button class="btnMenu-custom"
-                            id="modelButton-custom">Model&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &#9660;</button>
+                            id="modelButton-custom">Model&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#9660;</button>
                         <ul style="list-style: none; padding: 0; margin: 0; display: none; max-height: 150px; overflow-y: scroll; border: 1px solid #ddd;"
                             class="Menu-custom" id="modelMenu-custom">
-                            <!-- The model list will be dynamically populated -->
                         </ul>
                     </div>
                 </div>
+                <input id="extrapart-custom" class="extra-part-custom" type="submit" value="23049 total results"
+                    style="height: 32px; width: 170px; border:#8de020">
+
                 <script>
                     $(document).ready(function () {
                         let selectedBrand = "";
@@ -432,22 +478,24 @@
                             $(".filters-custom").toggleClass("active");
                         });
 
+                        // Close button functionality
+                        $(".close-btn-test").click(function () {
+                            $(".filters-custom").removeClass("active");
+                        });
+
                         // Define models for each brand
                         const models = {
-                            Mercedes: ["A Class", "B Class", "C Class", "E Class", "S Class", "GLA", "GLB", "GLE", "GLS", "Maybach"],
-                            Audi: ["A1", "A3", "A4", "A5", "A6", "A7", "A8L", "Q2", "Q3", "Q5", "Q7", "Q8", "E-tron"],
-                            BMW: ["Series 1", "Series 3", "Series 4", "Series 5", "X1", "X2", "X3", "X4", "X5", "X6", "X7", "I7"],
-                            Porsche: ["Cayman", "Spyder", "Carrera", "GT3", "GT3-RS", "Taycan", "Panamera", "Cayene"],
-                            "Rolls Royce": ["Phantom", "Spectre", "Cullinan"]
+                            Mercedes: ["C Class", "E Class", "S Class", "G Class"],
+                            Audi: ["A3", "A6", "A7", "A8"],
+                            BMW: ["Series 3", "Series 4", "Series 7", "Series 8"],
+                            Porsche: ["Taycan", "991", "992"],
+                            "Rolls Royce": ["Phantom", "Dawn", "Wraith", "Ghost"]
                         };
 
                         // Define combinations mapping (brand-model to URL)
                         const combinations = {
                             "mercedes": "mercedes.html",  // Brand-only page
-                            "mercedes-a-class": "mercedes-a-class.html",
-                            "mercedes-b-class": "mercedes-b-class.html",
                             "audi": "audi.html",  // Brand-only page
-                            "audi-a1": "audi-a1.html",
                             "audi-a3": "audi-a3.html",
                             "bmw": "bmw.html",  // Brand-only page
                             "bmw-series-1": "bmw-series-1.html",
@@ -516,27 +564,6 @@
                     });
 
                 </script>
-
-
-                </script>
-                <input id="extrapart-custom" class="extra-part-custom" type="submit" value="23049 total results"
-                    style="height: 32px; width: 170px; border:#8de020">
-                <script>$(".extra-part").css("background-color");
-                    $(".extra-part").css({
-                        "background-color": "rgba(141,224,32,1)",
-                        "color": "white"
-                    });
-                    $(".extra-part").on("mouseenter",
-                        function () {
-                            $(".extra-part").css("background-color", "rgba(141,224,32,1)");
-                        }
-                    )
-                    $(".extra-part").on("mouseleave",
-                        function () {
-                            $(".extra-part").css("background-color", "rgba(141,224,32,0.7");
-                        }
-                    )
-                </script>
             </div>
             <div class="guarantee-section">
                 <div class="guarantee-item">
@@ -557,89 +584,92 @@
                 </div>
             </div>
         </div>
-        <div class="listings-custom">
-            <div class="card-custom">
-                <img src="Audi/A3/kabriolet/a.jfif" alt="Rolls-Royce Dawn">
-                <div class="details-custom">
-                    <h4>Rolls-Royce Dawn 420 kW</h4>
-                    <p>13,500 km | 03/2018 | 420 kW (571 hp) | Automatic | Petrol</p>
-                    <div class="tags-custom">
-                        <span>Ulese te soferta</span>
-                        <span>Funksion masazhi</span>
-                        <span>Pneumatic suspension</span>
-                        <span>+7 more</span>
-                    </div>
-                    <p class="location-custom">Germany, transport: 757€</p>
-                    <p class="monthly-payment-custom">Monthly payment: 7,529€</p>
-                    <p class="price-custom">509,196€</p>
+    </div>
+    </div>
+    </div>
+    <div class="listings-custom" style="flex: 1 1 60%;">
+        <div class="card-custom">
+            <img src="Audi/A3/kabriolet/a.jfif" alt="Rolls-Royce Dawn">
+            <div class="details-custom">
+                <h4>Rolls-Royce Dawn 420 kW</h4>
+                <p>13,500 km | 03/2018 | 420 kW (571 hp) | Automatic | Petrol</p>
+                <div class="tags-custom">
+                    <span>Ulese te soferta</span>
+                    <span>Funksion masazhi</span>
+                    <span>Pneumatic suspension</span>
+                    <span>+7 more</span>
                 </div>
-            </div>
-
-            <div class="card-custom">
-                <img src="Audi/A3/kabriolet/a.jfif" alt="Rolls-Royce Dawn">
-                <div class="details-custom">
-                    <h4>Rolls-Royce Dawn 420 kW</h4>
-                    <p>13,500 km | 03/2018 | 420 kW (571 hp) | Automatic | Petrol</p>
-                    <div class="tags-custom">
-                        <span>Ulese te soferta</span>
-                        <span>Funksion masazhi</span>
-                        <span>Pneumatic suspension</span>
-                        <span>+7 more</span>
-                    </div>
-                    <p class="location-custom">Germany, transport: 757€</p>
-                    <p class="monthly-payment-custom">Monthly payment: 7,529€</p>
-                    <p class="price-custom">509,196€</p>
-                </div>
-            </div>
-            <div class="card-custom">
-                <img src="Audi/A3/kabriolet/a.jfif" alt="Rolls-Royce Dawn">
-                <div class="details-custom">
-                    <h4>Rolls-Royce Dawn 420 kW</h4>
-                    <p>13,500 km | 03/2018 | 420 kW (571 hp) | Automatic | Petrol</p>
-                    <div class="tags-custom">
-                        <span>Ulese te soferta</span>
-                        <span>Funksion masazhi</span>
-                        <span>Pneumatic suspension</span>
-                        <span>+7 more</span>
-                    </div>
-                    <p class="location-custom">Germany, transport: 757€</p>
-                    <p class="monthly-payment-custom">Monthly payment: 7,529€</p>
-                    <p class="price-custom">509,196€</p>
-                </div>
-            </div>
-            <div class="card-custom">
-                <img src="Audi/A3/kabriolet/a.jfif" alt="Rolls-Royce Dawn">
-                <div class="details-custom">
-                    <h4>Rolls-Royce Dawn 420 kW</h4>
-                    <p>13,500 km | 03/2018 | 420 kW (571 hp) | Automatic | Petrol</p>
-                    <div class="tags-custom">
-                        <span>Ulese te soferta</span>
-                        <span>Funksion masazhi</span>
-                        <span>Pneumatic suspension</span>
-                        <span>+7 more</span>
-                    </div>
-                    <p class="location-custom">Germany, transport: 757€</p>
-                    <p class="monthly-payment-custom">Monthly payment: 7,529€</p>
-                    <p class="price-custom">509,196€</p>
-                </div>
-            </div>
-            <div class="card-custom">
-                <img src="Audi/A3/kabriolet/a.jfif" alt="Rolls-Royce Dawn">
-                <div class="details-custom">
-                    <h4>Rolls-Royce Dawn 420 kW</h4>
-                    <p>13,500 km | 03/2018 | 420 kW (571 hp) | Automatic | Petrol</p>
-                    <div class="tags-custom">
-                        <span>Ulese te soferta</span>
-                        <span>Funksion masazhi</span>
-                        <span>Pneumatic suspension</span>
-                        <span>+7 more</span>
-                    </div>
-                    <p class="location-custom">Germany, transport: 757€</p>
-                    <p class="monthly-payment-custom">Monthly payment: 7,529€</p>
-                    <p class="price-custom">509,196€</p>
-                </div>
+                <p class="location-custom">Germany, transport: 757€</p>
+                <p class="monthly-payment-custom">Monthly payment: 7,529€</p>
+                <p class="price-custom">509,196€</p>
             </div>
         </div>
+
+        <div class="card-custom">
+            <img src="Audi/A3/kabriolet/a.jfif" alt="Rolls-Royce Dawn">
+            <div class="details-custom">
+                <h4>Rolls-Royce Dawn 420 kW</h4>
+                <p>13,500 km | 03/2018 | 420 kW (571 hp) | Automatic | Petrol</p>
+                <div class="tags-custom">
+                    <span>Ulese te soferta</span>
+                    <span>Funksion masazhi</span>
+                    <span>Pneumatic suspension</span>
+                    <span>+7 more</span>
+                </div>
+                <p class="location-custom">Germany, transport: 757€</p>
+                <p class="monthly-payment-custom">Monthly payment: 7,529€</p>
+                <p class="price-custom">509,196€</p>
+            </div>
+        </div>
+        <div class="card-custom">
+            <img src="Audi/A3/kabriolet/a.jfif" alt="Rolls-Royce Dawn">
+            <div class="details-custom">
+                <h4>Rolls-Royce Dawn 420 kW</h4>
+                <p>13,500 km | 03/2018 | 420 kW (571 hp) | Automatic | Petrol</p>
+                <div class="tags-custom">
+                    <span>Ulese te soferta</span>
+                    <span>Funksion masazhi</span>
+                    <span>Pneumatic suspension</span>
+                    <span>+7 more</span>
+                </div>
+                <p class="location-custom">Germany, transport: 757€</p>
+                <p class="monthly-payment-custom">Monthly payment: 7,529€</p>
+                <p class="price-custom">509,196€</p>
+            </div>
+        </div>
+        <div class="card-custom">
+            <img src="Audi/A3/kabriolet/a.jfif" alt="Rolls-Royce Dawn">
+            <div class="details-custom">
+                <h4>Rolls-Royce Dawn 420 kW</h4>
+                <p>13,500 km | 03/2018 | 420 kW (571 hp) | Automatic | Petrol</p>
+                <div class="tags-custom">
+                    <span>Ulese te soferta</span>
+                    <span>Funksion masazhi</span>
+                    <span>Pneumatic suspension</span>
+                    <span>+7 more</span>
+                </div>
+                <p class="location-custom">Germany, transport: 757€</p>
+                <p class="monthly-payment-custom">Monthly payment: 7,529€</p>
+                <p class="price-custom">509,196€</p>
+            </div>
+        </div>
+        <div class="card-custom">
+            <img src="Audi/A3/kabriolet/a.jfif" alt="Rolls-Royce Dawn">
+            <div class="details-custom">
+                <h4>Rolls-Royce Dawn 420 kW</h4>
+                <p>13,500 km | 03/2018 | 420 kW (571 hp) | Automatic | Petrol</p>
+                <div class="tags-custom">
+                    <span>Ulese te soferta</span>
+                    <span>Funksion masazhi</span>
+                    <span>Pneumatic suspension</span>
+                    <span>+7 more</span>
+                </div>
+                <p class="location-custom">Germany, transport: 757€</p>
+                <p class="monthly-payment-custom">Monthly payment: 7,529€</p>
+                <p class="price-custom">509,196€</p>
+            </div>
+        </div>
+    </div>
     </div>
 
 </body>
