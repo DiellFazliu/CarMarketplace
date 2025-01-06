@@ -598,17 +598,17 @@
             </div>
             <div class="guarantee-section">
                 <div class="guarantee-item">
-                    <img src="car-logos/shield.png" alt="Icon">
+                    <img src="../car-logos/shield.png" alt="Icon">
                     <h3>Kthim të parave</h3>
                     <p>Nëse nuk ju pëlqen vetura, kthejeni brenda 14 ditëve.</p>
                 </div>
                 <div class="guarantee-item">
-                    <img src="car-logos/shield.png" alt="Icon">
+                    <img src="../car-logos/shield.png" alt="Icon">
                     <h3>Blerje e sigurt</h3>
                     <p>Ne garantojmë gjendjen teknike të çdo veture.</p>
                 </div>
                 <div class="guarantee-item">
-                    <img src="car-logos/shield.png" alt="Icon">
+                    <img src="../car-logos/shield.png" alt="Icon">
                     <h3>6 muaj garancion</h3>
                     <p>Ofrojmë çdo veturë me garancion.</p>
                     <a href="#">Më shumë rreth garancive &rarr;</a>
@@ -773,6 +773,14 @@
                 
     </div>
     </div>
+    <div id="Footer"></div>
+    <script>
+        fetch('../footer.html')
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById('Footer').innerHTML = data;
+          });
+      </script>
 
 </body>
 
