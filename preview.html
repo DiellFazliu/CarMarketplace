@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <title>Preview</title>
     <style>
         * {
@@ -403,15 +405,21 @@
 </head>
 
 <body>
-    <div id="header"></div>
+    <div id="Banner"></div>
     <script>
         fetch('banner.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header').innerHTML = data;
-            });
-    </script>
-    <script src="banner.js"></script>
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById('Banner').innerHTML = data;
+          });
+      </script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const script = document.createElement('script');
+          script.src = 'banner.js';
+          document.body.appendChild(script);
+        });
+      </script>
 
     <p id="titulli">Audi A3 Cabriolet</p>
     <div class="logos">
@@ -538,9 +546,14 @@
                 <div class="pricing-header">
                     <h2>Çmimi pa doganë</h2>
                     <div class="price">390 423 €</div>
-                    <button class="btn">Blej</button>
+                    <button class="btn" id="payment">Blej</button>
                     <div class="financing">Financim 8 321 €/muaj</div>
                 </div>
+                <script>
+                    document.getElementById('payment').addEventListener('click', function() {
+                      window.location.href = 'payment.html';
+                    });
+                  </script>
 
                 <div class="services">
                     <h3>Totali i shërbimeve</h3>
@@ -577,7 +590,6 @@
             </div>
         </div>
     </div>
-
     <footer>
         &copy; 2025 Audi. Të gjitha të drejtat e rezervuara.
     </footer>
